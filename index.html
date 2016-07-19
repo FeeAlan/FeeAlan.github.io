@@ -313,6 +313,123 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/18/network-gson-parse/" itemprop="url">
+                  网络请求json解析时遇到的坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-18T22:10:27+08:00" content="2016-07-18">
+              2016-07-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/18/network-gson-parse/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/18/network-gson-parse/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="1、网络请求数据返回的几种情况"><a href="#1、网络请求数据返回的几种情况" class="headerlink" title="1、网络请求数据返回的几种情况"></a>1、网络请求数据返回的几种情况</h1><ol>
+<li>http返回状态码为404或者500错误，即请求未成功</li>
+<li>http返回状态码为200，请求成功</li>
+</ol>
+<h1 id="2、网络请求数据成功返回的json数据格式"><a href="#2、网络请求数据成功返回的json数据格式" class="headerlink" title="2、网络请求数据成功返回的json数据格式"></a>2、网络请求数据成功返回的json数据格式</h1><pre><code>{
+    &quot;data&quot;: &quot;&quot;,
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;status&quot;: 0  //这里 0代表成功  1代表失败
+}     
+</code></pre><p> 一般数据最外层都相同</p>
+<blockquote>
+<p><strong>status</strong> 即客户端和服务端商量好的状态码</p>
+<p><strong>msg</strong>  即对status的一个解释</p>
+<p><strong>data</strong> 存放数据</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/18/network-gson-parse/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/17/Serialize-and-Deserialize/" itemprop="url">
                   Android 序列化与反序列化
                 </a>
@@ -571,7 +688,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -588,7 +705,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -90,7 +90,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="json,gson,JsonSyntaxException," />
 
 
 
@@ -106,15 +106,37 @@
 
 
 
-<meta name="description" content="爱编程，爱生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="爱编程，爱生活">
-<meta property="og:url" content="https://feealan.github.io/tags/Parcelable/index.html">
+<meta name="description" content="1、网络请求数据返回的几种情况
+http返回状态码为404或者500错误，即请求未成功
+http返回状态码为200，请求成功
+
+2、网络请求数据成功返回的json数据格式{
+    &amp;quot;data&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;msg&amp;quot;: &amp;quot;success&amp;quot;,
+    &amp;quot;status&amp;quot;: 0  //这里 0代表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络请求json解析时遇到的坑">
+<meta property="og:url" content="https://feealan.github.io/2016/07/18/network-gson-parse/index.html">
 <meta property="og:site_name" content="爱编程，爱生活">
-<meta property="og:description" content="爱编程，爱生活">
+<meta property="og:description" content="1、网络请求数据返回的几种情况
+http返回状态码为404或者500错误，即请求未成功
+http返回状态码为200，请求成功
+
+2、网络请求数据成功返回的json数据格式{
+    &amp;quot;data&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;msg&amp;quot;: &amp;quot;success&amp;quot;,
+    &amp;quot;status&amp;quot;: 0  //这里 0代表">
+<meta property="og:updated_time" content="2016-07-19T09:08:53.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爱编程，爱生活">
-<meta name="twitter:description" content="爱编程，爱生活">
+<meta name="twitter:title" content="网络请求json解析时遇到的坑">
+<meta name="twitter:description" content="1、网络请求数据返回的几种情况
+http返回状态码为404或者500错误，即请求未成功
+http返回状态码为200，请求成功
+
+2、网络请求数据成功返回的json数据格式{
+    &amp;quot;data&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;msg&amp;quot;: &amp;quot;success&amp;quot;,
+    &amp;quot;status&amp;quot;: 0  //这里 0代表">
 
 
 
@@ -135,9 +157,9 @@
 
 
 
-  <link rel="canonical" href="https://feealan.github.io/tags/Parcelable/"/>
+  <link rel="canonical" href="https://feealan.github.io/2016/07/18/network-gson-parse/"/>
 
-  <title> 标签: Parcelable | 爱编程，爱生活 </title>
+  <title> 网络请求json解析时遇到的坑 | 爱编程，爱生活 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -168,7 +190,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,53 +311,273 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Parcelable
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                网络请求json解析时遇到的坑
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-18T22:10:27+08:00" content="2016-07-18">
+              2016-07-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/18/network-gson-parse/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/18/network-gson-parse/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="1、网络请求数据返回的几种情况"><a href="#1、网络请求数据返回的几种情况" class="headerlink" title="1、网络请求数据返回的几种情况"></a>1、网络请求数据返回的几种情况</h1><ol>
+<li>http返回状态码为404或者500错误，即请求未成功</li>
+<li>http返回状态码为200，请求成功</li>
+</ol>
+<h1 id="2、网络请求数据成功返回的json数据格式"><a href="#2、网络请求数据成功返回的json数据格式" class="headerlink" title="2、网络请求数据成功返回的json数据格式"></a>2、网络请求数据成功返回的json数据格式</h1><pre><code>{
+    &quot;data&quot;: &quot;&quot;,
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;status&quot;: 0  //这里 0代表成功  1代表失败
+}     
+</code></pre><p> 一般数据最外层都相同</p>
+<blockquote>
+<p><strong>status</strong> 即客户端和服务端商量好的状态码</p>
+<p><strong>msg</strong>  即对status的一个解释</p>
+<p><strong>data</strong> 存放数据</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="3、网络数据请求成功的几种情况"><a href="#3、网络数据请求成功的几种情况" class="headerlink" title="3、网络数据请求成功的几种情况"></a>3、网络数据请求成功的几种情况</h1><ol>
+<li><strong>status</strong>为 1，数据请求失败，<strong>msg</strong>信息为 fail</li>
+<li><strong>status</strong>为 0，数据加载成功，<strong>msg</strong>信息为 success，<strong>data</strong>内有数据</li>
+<li><strong>status</strong>为 0，数据加载成功，<strong>msg</strong>信息为 success，<strong>data</strong>数据为空 显示为 <strong>“”</strong></li>
+</ol>
+<h1 id="4、针对上面的这三种情况，如果不做处理直接用Gson则会报以下的异常"><a href="#4、针对上面的这三种情况，如果不做处理直接用Gson则会报以下的异常" class="headerlink" title="4、针对上面的这三种情况，如果不做处理直接用Gson则会报以下的异常"></a>4、针对上面的这三种情况，如果不做处理直接用Gson则会报以下的异常</h1><pre><code>com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 11
+                                                                         at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+                                                                         at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:93)
+                                                                         at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:172)
+                                                                         at com.google.gson.Gson.fromJson(Gson.java:803)
+                                                                         at com.google.gson.Gson.fromJson(Gson.java:768)
+                                                                         at com.google.gson.Gson.fromJson(Gson.java:717)
+                                                                         at com.google.gson.Gson.fromJson(Gson.java:689)
+</code></pre><h1 id="5、解决办法（填坑过程）"><a href="#5、解决办法（填坑过程）" class="headerlink" title="5、解决办法（填坑过程）"></a>5、解决办法（填坑过程）</h1><ol>
+<li>在使用gson解析时，对其抓取异常，在抓取到的异常中直接报系统错误。当时是有一种偷懒的想法，后来想想，这种办法把 请求成功中的第一第二种情况合到一起解决了，<strong>不可取</strong></li>
+<li><p>和后台商量，如果数据加载失败，则返回的json为</p>
+<pre><code>{&quot;msg&quot;: &quot;fail&quot;,&quot;status&quot;: 1}
+</code></pre><p>如果数据为空，则返回的data也必须和有数据时类型一样，即下面这种情况，数据为空时给其一个默认值</p>
+<p> 正常数据：</p>
+<pre><code>{
+    &quot;data&quot;: {
+        &quot;username&quot;: &quot;fee&quot;,
+        &quot;age&quot;: 20,
+        &quot;sex&quot;: 1
+    },
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;status&quot;: 0
+}
+</code></pre><p> 数据为空：</p>
+<pre><code>{
+    &quot;data&quot;: {},
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;status&quot;: 0
+}
+</code></pre><p> 默认值设置标准：正常情况下返回的类型是什么，则默认值的类型是什么<br> 解释：</p>
+<ol>
+<li>如果返回的数据为字符串，为空返回 <strong>“”</strong></li>
+<li>如果返回的数据为对象，为空返回 <strong>｛｝</strong></li>
+<li>如果返回的数据为集合，为空返回 <strong>[]</strong></li>
+</ol>
+</li>
+<li><p>客户端在解析数据时，编写一个解析工具类 </p>
+<p> <strong>JsonUtil</strong></p>
+<pre><code>public class JsonUtil {
+    public static Object parse(String json, Type type) {
+        JSONObject object = null;
+        try {
+            object = new JSONObject(json);
+            int status = object.getInt(&quot;status&quot;);
+            String msg = object.getString(&quot;msg&quot;);
+            Gson gson = new Gson();
+            if (status == 1) {//数据请求失败
+                return gson.fromJson(json, type);
+            } else if (status == 0) {//数据请求成功
+                if (!object.getString(&quot;data&quot;).equals(&quot;&quot;) &amp;&amp; !&quot;&quot;.equals(object.getString(&quot;data&quot;))) {//数据不为空
+                    return gson.fromJson(json, type);
+                } else {
+                    return &quot;&quot;;
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            LogUtils.e(e.getMessage());
+            return null;
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            LogUtils.e(e.getMessage());
+            return null;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            LogUtils.e(e.getMessage());
+            return null;
+        }
+        return null;
+    }
+}
+</code></pre><p>  调用：</p>
+<pre><code>LogUtils.d(data);
+Type     type = new TypeToken&lt;TestBean&gt;() {}.getType();
+        try {
+            TestBean bean = (TestBean) JsonUtil.parse(data, type);
+            LogUtils.d(bean.toString());
+            if (bean.getStatus() == 0) {
+                LogUtils.d(&quot;DATA::&quot; + bean.getData().getData());
+                if (bean.getData().getData() == null) {
+                    LogUtils.d(&quot;数据为空&quot;);
+                } else {
+                    LogUtils.d(bean.getData().toString());
+                }
+            } else {
+                LogUtils.d(&quot;数据加载失败&quot;);
+            }
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+            LogUtils.e(e.getMessage());
+        }
+</code></pre></li>
+</ol>
+<blockquote>
+<p><strong>ps</strong>:该解决办法自己做过测试可行，但是并不完美，以后有更好的解决办法在来修改</p>
+</blockquote>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/07/17/Serialize-and-Deserialize/" itemprop="url">
-              
-                <span itemprop="name">Android 序列化与反序列化</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-17T22:48:08+08:00"
-              content="2016-07-17" >
-          07-17
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/json/" rel="tag">#json</a>
+          
+            <a href="/tags/gson/" rel="tag">#gson</a>
+          
+            <a href="/tags/JsonSyntaxException/" rel="tag">#JsonSyntaxException</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/17/Serialize-and-Deserialize/" rel="next" title="Android 序列化与反序列化">
+                <i class="fa fa-chevron-left"></i> Android 序列化与反序列化
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/18/network-gson-parse/"
+           data-title="网络请求json解析时遇到的坑" data-url="https://feealan.github.io/2016/07/18/network-gson-parse/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -355,8 +597,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -440,6 +691,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、网络请求数据返回的几种情况"><span class="nav-number">1.</span> <span class="nav-text">1、网络请求数据返回的几种情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、网络请求数据成功返回的json数据格式"><span class="nav-number">2.</span> <span class="nav-text">2、网络请求数据成功返回的json数据格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、网络数据请求成功的几种情况"><span class="nav-number">3.</span> <span class="nav-text">3、网络数据请求成功的几种情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、针对上面的这三种情况，如果不做处理直接用Gson则会报以下的异常"><span class="nav-number">4.</span> <span class="nav-text">4、针对上面的这三种情况，如果不做处理直接用Gson则会报以下的异常</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、解决办法（填坑过程）"><span class="nav-number">5.</span> <span class="nav-text">5、解决办法（填坑过程）</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -536,6 +798,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
