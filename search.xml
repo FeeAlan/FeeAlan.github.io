@@ -103,16 +103,19 @@
 Type     type = new TypeToken&lt;TestBean&gt;() {}.getType();
         try {
             TestBean bean = (TestBean) JsonUtil.parse(data, type);
-            LogUtils.d(bean.toString());
-            if (bean.getStatus() == 0) {
-                LogUtils.d(&quot;DATA::&quot; + bean.getData().getData());
-                if (bean.getData().getData() == null) {
-                    LogUtils.d(&quot;数据为空&quot;);
+            if (bean != null) {
+                if (bean.getStatus() == 0) {
+                    LogUtils.d(&quot;DATA::&quot; + bean.getData().getData());
+                    if (bean.getData().getData() == null) {
+                        LogUtils.d(&quot;数据为空::::::::&quot;);
+                    } else {
+                        LogUtils.d(bean.getData().toString());
+                    }
                 } else {
-                    LogUtils.d(bean.getData().toString());
+                    LogUtils.d(&quot;数据加载失败&quot;);
                 }
             } else {
-                LogUtils.d(&quot;数据加载失败&quot;);
+                LogUtils.d(&quot;数据为空..........&quot;);
             }
         } catch (ClassCastException e) {
             e.printStackTrace();

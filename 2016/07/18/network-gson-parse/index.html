@@ -126,7 +126,7 @@ http返回状态码为200，请求成功
     &amp;quot;data&amp;quot;: &amp;quot;&amp;quot;,
     &amp;quot;msg&amp;quot;: &amp;quot;success&amp;quot;,
     &amp;quot;status&amp;quot;: 0  //这里 0代表">
-<meta property="og:updated_time" content="2016-07-21T02:59:26.542Z">
+<meta property="og:updated_time" content="2016-07-21T03:01:10.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络请求json解析时遇到的坑">
 <meta name="twitter:description" content="1、网络请求数据返回的几种情况
@@ -476,16 +476,19 @@ http返回状态码为200，请求成功
 Type     type = new TypeToken&lt;TestBean&gt;() {}.getType();
         try {
             TestBean bean = (TestBean) JsonUtil.parse(data, type);
-            LogUtils.d(bean.toString());
-            if (bean.getStatus() == 0) {
-                LogUtils.d(&quot;DATA::&quot; + bean.getData().getData());
-                if (bean.getData().getData() == null) {
-                    LogUtils.d(&quot;数据为空&quot;);
+            if (bean != null) {
+                if (bean.getStatus() == 0) {
+                    LogUtils.d(&quot;DATA::&quot; + bean.getData().getData());
+                    if (bean.getData().getData() == null) {
+                        LogUtils.d(&quot;数据为空::::::::&quot;);
+                    } else {
+                        LogUtils.d(bean.getData().toString());
+                    }
                 } else {
-                    LogUtils.d(bean.getData().toString());
+                    LogUtils.d(&quot;数据加载失败&quot;);
                 }
             } else {
-                LogUtils.d(&quot;数据加载失败&quot;);
+                LogUtils.d(&quot;数据为空..........&quot;);
             }
         } catch (ClassCastException e) {
             e.printStackTrace();
