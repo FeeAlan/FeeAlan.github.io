@@ -79,7 +79,7 @@
                 if (!object.getString(&quot;data&quot;).equals(&quot;&quot;) &amp;&amp; !&quot;&quot;.equals(object.getString(&quot;data&quot;))) {//数据不为空
                     return gson.fromJson(json, type);
                 } else {
-                    return &quot;&quot;;
+                    return null;
                 }
             }
         } catch (JSONException e) {

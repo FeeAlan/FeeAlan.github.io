@@ -126,7 +126,7 @@ http返回状态码为200，请求成功
     &amp;quot;data&amp;quot;: &amp;quot;&amp;quot;,
     &amp;quot;msg&amp;quot;: &amp;quot;success&amp;quot;,
     &amp;quot;status&amp;quot;: 0  //这里 0代表">
-<meta property="og:updated_time" content="2016-07-19T09:08:53.880Z">
+<meta property="og:updated_time" content="2016-07-21T02:59:26.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络请求json解析时遇到的坑">
 <meta name="twitter:description" content="1、网络请求数据返回的几种情况
@@ -452,7 +452,7 @@ http返回状态码为200，请求成功
                 if (!object.getString(&quot;data&quot;).equals(&quot;&quot;) &amp;&amp; !&quot;&quot;.equals(object.getString(&quot;data&quot;))) {//数据不为空
                     return gson.fromJson(json, type);
                 } else {
-                    return &quot;&quot;;
+                    return null;
                 }
             }
         } catch (JSONException e) {
