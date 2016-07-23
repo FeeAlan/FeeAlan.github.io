@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title><![CDATA[android TextView设置超链接]]></title>
+      <url>https://feealan.github.io/2016/07/23/android-text-link/</url>
+      <content type="html"><![CDATA[<p>今天在访问<a href="https://segmentfault.com/u/coding_fee" title="segmentfault" target="_blank" rel="external">segmentfault</a>时遇到一个这样的问题：<strong>如何为Textview设置超链接？</strong></p>
+<p>通过查阅资料后，总结了一下。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
+<li>例如App在登录时让用户选择是否遵循某项规则或则条款，点击即可查看条款内容。如果内容过多则是跳转到一个静态网页。</li>
+<li>在app做一个超链接的功能</li>
+</ol>
+<a id="more"></a>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li><p>在<strong>XML</strong>文件中设置属性 <strong>android:autoLink=”web”</strong>即可</p>
+<pre><code>&lt;TextView
+  android:layout_width=&quot;match_parent&quot;
+  android:layout_height=&quot;wrap_content&quot;
+  android:text=&quot;http://www.baidu.com&quot;
+  android:id=&quot;@+id/tv&quot;
+  android:autoLink=&quot;web&quot;
+  android:layout_marginTop=&quot;10dp&quot;/&gt;
+</code></pre></li>
+<li><p>在代码中设置 </p>
+<pre><code>TextView tv = (TextView) findViewById(R.id.tv);
+String html = &quot;百度一下：&quot;;
+html+=&quot;&lt;a href= \&quot;http://www.baidu.com/\&quot;&gt;www.baidu.com&lt;/a&gt;&quot;;
+CharSequence charSequence = Html.fromHtml(html);
+tv.setText(charSequence);
+//必须要设置下面这个属性
+tv.setMovementMethod(LinkMovementMethod.getInstance());
+</code></pre><ul>
+<li>在设置textview的文本内容时链节的内容需要带上协议号 <strong>http</strong>或者<strong>https</strong>,如果不带上请加上这句属性 <strong>tv.setAutoLinkMask(Linkify.WEB_URLS);</strong></li>
+<li>代码设置超链接时可以设置文字的颜色，添加下划线等功能</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[网络请求json解析时遇到的坑]]></title>
       <url>https://feealan.github.io/2016/07/18/network-gson-parse/</url>
       <content type="html"><![CDATA[<h1 id="1、网络请求数据返回的几种情况"><a href="#1、网络请求数据返回的几种情况" class="headerlink" title="1、网络请求数据返回的几种情况"></a>1、网络请求数据返回的几种情况</h1><ol>
