@@ -382,8 +382,7 @@
 
       
         
-          
-            <p>之前那个项目遇到一个需求，大概是这个样子：</p>
+          <p>之前那个项目遇到一个需求，大概是这个样子：</p>
 <blockquote>
 <p>用户创建一个户外活动，可以设置时间、地点、主题、内容。。。。</p>
 <p>在设定活动内容时可以添加文字和图片，且顺序是不确定的，用户可以随意选择插入图片和文字</p>
@@ -393,76 +392,11 @@
 <li>如何把这些数据参数提交到后台？</li>
 <li>如何在客户端显示这些数据？</li>
 </ol>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="富文本-webview"><a href="#富文本-webview" class="headerlink" title="富文本+webview"></a>富文本+webview</h3><ol>
-<li>自定义一个富文本编辑控件，用户能够插入文字，图片；删除文字、图片。在<a href="https://github.com/" title="github" target="_blank" rel="external">https://github.com/</a>找了蛮久都没找到合适的，选择直接使用系统的<strong>EditText</strong>控件。</li>
-<li>使用<strong>ImageSpan</strong>往<strong>EditTEXT</strong>插入一段 <strong>&lt; img src=””/&gt;</strong>片段：</li>
-</ol>
-<pre><code>    Bitmap bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
-    // 根据Bitmap对象创建ImageSpan对象
-    ImageSpan imageSpan = new ImageSpan(this, bitmap);
-    // 创建一个SpannableString对象，以便插入用ImageSpan对象封装的图像
-    String tempUrl = &quot;&lt;img src=\&quot;&quot; + path + &quot;\&quot; /&gt;&quot;;
-    final SpannableString spannableString = new SpannableString(tempUrl);
-    // 用ImageSpan对象替换你指定的字符串
-    spannableString.setSpan(imageSpan, 0, tempUrl.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-    // 将选择的图片追加到EditText中光标所在位置
-    final int index = et_act_content.getSelectionStart(); // 获取光标所在位置
-    final Editable edit_text = et_act_content.getEditableText();
-    handler.post(new Runnable() {
-        @Override
-        public void run() {
-            if (index &lt; 0 || index &gt;= edit_text.length()) {
-                edit_text.append(spannableString);
-            } else {
-                edit_text.insert(index, spannableString);
-            }
-        }
-    });
-使用**handler.post**是因为测试时在这里报错，editTEXT在拼接字符时有可能是个耗时操作
-</code></pre><ol>
-<li>在用户设置好活动内容后，点击发布活动，提交表单。在这一个操作中做三步处理：<ul>
-<li>先把图片上传至服务器，然后服务器返回图片的地址，</li>
-<li>客户端拿到地址后，分别把图片的地址插入到对应的img 标签的src属性中，这个时候Edittext中的内容其实是相当于一个html的片段 例如：<pre><code>**hello world&lt; img src=&quot;http://img.baidu.com/njkn.jpg&quot;/&gt;**
-</code></pre></li>
-<li>然后在把所有的内容提交到服务器</li>
-</ul>
-</li>
-<li>编写一个固定的格式的html,固定的title、固定的时间显示，地址等等，</li>
-<li><p>在客户端设置一个包含控件WebView的Fragment用于显示活动详情</p>
-<pre><code>&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class=&quot;title&quot;&gt;活动主题&lt;/div&gt;
-    &lt;div class=&quot;time&quot;&gt;活动时间&lt;/div&gt;
-    &lt;div class=&quot;content&quot;&gt;
-        &lt;!--插入用户输入的活动内容--&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre></li>
-<li><p>客户端加载该活动详情网页是传入活动<strong>ID</strong>即可显示该活动的网页</p>
-<p> 结果：基本上可以实现上述功能，但是存在问题。</p>
-<ul>
-<li>多文件上传的问题</li>
-<li>网页加载时不好做适配</li>
-<li>文字排版不太好看</li>
-<li>网页加载很慢，常常是固定的部分先加载完成，然后动态的部分后加载，这个效果不太好</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li><p>根据存在的问题进行改进</p>
-<ul>
-<li>将固定格式的html作为资源文件存在客户端，每次加载网页的时候就加载该网页</li>
-<li>根据ID向后台请求json数据，其中存在有html片段或者其他数据直接插入到该网页中，而不用每次都加载网页，加快加载速度</li>
-</ul>
-</li>
-</ol>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/24/android-html-post/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
