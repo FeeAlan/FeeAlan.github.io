@@ -32,9 +32,9 @@ hexo.on(&apos;new&apos;, function(data){
     </entry>
     
     <entry>
-      <title><![CDATA[android image compress ]]></title>
+      <title><![CDATA[android 图片处理]]></title>
       <url>https://feealan.github.io/2016/07/31/android-image-compress/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<h2 id="处理图片"><a href="#处理图片" class="headerlink" title="处理图片"></a>处理图片</h2>]]></content>
     </entry>
     
     <entry>

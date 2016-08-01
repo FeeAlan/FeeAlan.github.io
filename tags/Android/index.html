@@ -109,7 +109,7 @@
 <meta name="description" content="爱编程，爱生活">
 <meta property="og:type" content="website">
 <meta property="og:title" content="爱编程，爱生活">
-<meta property="og:url" content="https://feealan.github.io/tags/android/index.html">
+<meta property="og:url" content="https://feealan.github.io/tags/Android/index.html">
 <meta property="og:site_name" content="爱编程，爱生活">
 <meta property="og:description" content="爱编程，爱生活">
 <meta name="twitter:card" content="summary">
@@ -135,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="https://feealan.github.io/tags/android/"/>
+  <link rel="canonical" href="https://feealan.github.io/tags/Android/"/>
 
-  <title> 标签: android | 爱编程，爱生活 </title>
+  <title> 标签: Android | 爱编程，爱生活 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -292,7 +292,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        android
+        Android
         <small>标签</small>
       </h2>
     </div>
@@ -305,37 +305,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/07/24/android-html-post/" itemprop="url">
+            <a class="post-title-link" href="/2016/07/17/Serialize-and-Deserialize/" itemprop="url">
               
-                <span itemprop="name">android 表单提交</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-24T00:42:19+08:00"
-              content="2016-07-24" >
-          07-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/07/23/android-text-link/" itemprop="url">
-              
-                <span itemprop="name">android TextView设置超链接</span>
+                <span itemprop="name">Android 序列化与反序列化</span>
               
             </a>
         
@@ -343,9 +315,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-23T23:33:24+08:00"
-              content="2016-07-23" >
-          07-23
+              datetime="2016-07-17T22:48:08+08:00"
+              content="2016-07-17" >
+          07-17
         </time>
       </div>
 
@@ -412,7 +384,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -695,6 +667,54 @@
                             // highlight all keywords
                             keywords.forEach(function(keyword){
                                 var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+      var regS = new RegExp(keyword, "gi");
                                 match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
                             });
 
