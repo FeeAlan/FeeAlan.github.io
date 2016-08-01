@@ -90,7 +90,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="client,server,time," />
 
 
 
@@ -106,16 +106,34 @@
 
 
 
-<meta name="description" content="爱编程，爱生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://feealan.github.io/tags/index.html">
+<meta name="description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。
+
+不同用户的系统时间可能不同
+不同用户设置的时区不同
+
+解决办法
+server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="客户端与服务端同步时间">
+<meta property="og:url" content="https://feealan.github.io/2016/08/02/client-and-server-time-calibration/index.html">
 <meta property="og:site_name" content="爱编程，爱生活">
-<meta property="og:description" content="爱编程，爱生活">
-<meta property="og:updated_time" content="2016-07-16T16:12:06.937Z">
+<meta property="og:description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。
+
+不同用户的系统时间可能不同
+不同用户设置的时区不同
+
+解决办法
+server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不">
+<meta property="og:updated_time" content="2016-08-01T16:52:42.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="爱编程，爱生活">
+<meta name="twitter:title" content="客户端与服务端同步时间">
+<meta name="twitter:description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。
+
+不同用户的系统时间可能不同
+不同用户设置的时区不同
+
+解决办法
+server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不">
 
 
 
@@ -136,15 +154,9 @@
 
 
 
-  <link rel="canonical" href="https://feealan.github.io/tags/"/>
+  <link rel="canonical" href="https://feealan.github.io/2016/08/02/client-and-server-time-calibration/"/>
 
-  <title>
-  
-
-  
-    标签 | 爱编程，爱生活
-  
-</title>
+  <title> 客户端与服务端同步时间 | 爱编程，爱生活 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -175,7 +187,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -298,16 +310,176 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 21 个标签
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                客户端与服务端同步时间
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-02T00:12:09+08:00" content="2016-08-02">
+              2016-08-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/02/client-and-server-time-calibration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/02/client-and-server-time-calibration/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
-        <div class="tag-cloud-tags">
-          <a href="/tags/Android/" style="font-size: 12px; color: #ccc">Android</a> <a href="/tags/JsonSyntaxException/" style="font-size: 12px; color: #ccc">JsonSyntaxException</a> <a href="/tags/Parcelable/" style="font-size: 12px; color: #ccc">Parcelable</a> <a href="/tags/android/" style="font-size: 30px; color: #111">android</a> <a href="/tags/auto-open-file/" style="font-size: 12px; color: #ccc">auto open file</a> <a href="/tags/client/" style="font-size: 12px; color: #ccc">client</a> <a href="/tags/compress/" style="font-size: 12px; color: #ccc">compress</a> <a href="/tags/gson/" style="font-size: 12px; color: #ccc">gson</a> <a href="/tags/hello/" style="font-size: 12px; color: #ccc">hello</a> <a href="/tags/hexo/" style="font-size: 12px; color: #ccc">hexo</a> <a href="/tags/http/" style="font-size: 12px; color: #ccc">http</a> <a href="/tags/hyperlink/" style="font-size: 12px; color: #ccc">hyperlink</a> <a href="/tags/image/" style="font-size: 12px; color: #ccc">image</a> <a href="/tags/json/" style="font-size: 12px; color: #ccc">json</a> <a href="/tags/post/" style="font-size: 12px; color: #ccc">post</a> <a href="/tags/richText/" style="font-size: 12px; color: #ccc">richText</a> <a href="/tags/serialize/" style="font-size: 12px; color: #ccc">serialize</a> <a href="/tags/server/" style="font-size: 12px; color: #ccc">server</a> <a href="/tags/test/" style="font-size: 12px; color: #ccc">test</a> <a href="/tags/textview/" style="font-size: 12px; color: #ccc">textview</a> <a href="/tags/time/" style="font-size: 12px; color: #ccc">time</a>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p><strong>设计一个电影开始放映的倒计时的功能</strong>。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。</p>
+<ol>
+<li>不同用户的系统时间可能不同</li>
+<li>不同用户设置的时区不同</li>
+</ol>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li><strong>server</strong>当前的<code>Syetem.currentTimeMills()</code>发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不要用<strong>Date</strong>，而是发送一个<strong>long</strong>类型的整数。</li>
+<li><strong>client</strong>设置时区为<strong>GMT+8</strong>, <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));</code>,这里先考虑在东八区的情况，其他时区暂不考虑</li>
+<li><p>编写方法同步client和server的时间</p>
+<pre><code>private void asyncBetweenServerAndClientTime(long serverTime) {
+    TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));
+    //时间差
+    Long d_value = serverTime+8*60*60*1000
+            -System.currentTimeMillis();
+    // 保存 d_value
+    ....
+}
+</code></pre></li>
+</ol>
+<ol>
+<li>在倒计时的时间加上保存的<strong>d_value</strong>，这样就能保证在每个客户端看到的倒计时相同了<a id="more"></a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/client/" rel="tag">#client</a>
+          
+            <a href="/tags/server/" rel="tag">#server</a>
+          
+            <a href="/tags/time/" rel="tag">#time</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/31/hexo-new-post-auto-open-markdown/" rel="next" title="hexo发布新文章是自动打开编辑器">
+                <i class="fa fa-chevron-left"></i> hexo发布新文章是自动打开编辑器
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
   </div>
 
 
@@ -321,8 +493,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="tags/index.html"
-           data-title="tags" data-url="https://feealan.github.io/tags/index.html">
+      <div class="ds-thread" data-thread-key="2016/08/02/client-and-server-time-calibration/"
+           data-title="客户端与服务端同步时间" data-url="https://feealan.github.io/2016/08/02/client-and-server-time-calibration/">
       </div>
     
   </div>
@@ -346,8 +518,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -431,6 +612,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#场景"><span class="nav-number">1.</span> <span class="nav-text">场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -527,6 +719,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

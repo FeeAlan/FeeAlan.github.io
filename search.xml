@@ -4,6 +4,34 @@
   
     
     <entry>
+      <title><![CDATA[客户端与服务端同步时间]]></title>
+      <url>https://feealan.github.io/2016/08/02/client-and-server-time-calibration/</url>
+      <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p><strong>设计一个电影开始放映的倒计时的功能</strong>。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。</p>
+<ol>
+<li>不同用户的系统时间可能不同</li>
+<li>不同用户设置的时区不同</li>
+</ol>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li><strong>server</strong>当前的<code>Syetem.currentTimeMills()</code>发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不要用<strong>Date</strong>，而是发送一个<strong>long</strong>类型的整数。</li>
+<li><strong>client</strong>设置时区为<strong>GMT+8</strong>, <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));</code>,这里先考虑在东八区的情况，其他时区暂不考虑</li>
+<li><p>编写方法同步client和server的时间</p>
+<pre><code>private void asyncBetweenServerAndClientTime(long serverTime) {
+    TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));
+    //时间差
+    Long d_value = serverTime+8*60*60*1000
+            -System.currentTimeMillis();
+    // 保存 d_value
+    ....
+}
+</code></pre></li>
+</ol>
+<ol>
+<li>在倒计时的时间加上保存的<strong>d_value</strong>，这样就能保证在每个客户端看到的倒计时相同了<a id="more"></a></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[hexo发布新文章是自动打开编辑器]]></title>
       <url>https://feealan.github.io/2016/07/31/hexo-new-post-auto-open-markdown/</url>
       <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在使用hexo时，发现每次new post一篇文章，都要先输入命令<code>hexo new &quot;new post name&quot;</code>,然后再去文件夹里找刚才new的那篇文章，之后再用markdown打开，有点麻烦，万一文章多了的话一下还难得找到。</p>
@@ -34,7 +62,8 @@ hexo.on(&apos;new&apos;, function(data){
     <entry>
       <title><![CDATA[android 图片处理]]></title>
       <url>https://feealan.github.io/2016/07/31/android-image-compress/</url>
-      <content type="html"><![CDATA[<h2 id="处理图片"><a href="#处理图片" class="headerlink" title="处理图片"></a>处理图片</h2>]]></content>
+      <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>开发app时图片处理一直是个比较头疼的问题，下面的问题常常会遇到</p>
+]]></content>
     </entry>
     
     <entry>
