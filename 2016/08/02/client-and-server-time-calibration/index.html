@@ -112,7 +112,7 @@
 不同用户设置的时区不同
 
 解决办法
-server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不">
+server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
 <meta property="og:type" content="article">
 <meta property="og:title" content="客户端与服务端同步时间">
 <meta property="og:url" content="https://feealan.github.io/2016/08/02/client-and-server-time-calibration/index.html">
@@ -123,8 +123,8 @@ server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间�
 不同用户设置的时区不同
 
 解决办法
-server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不">
-<meta property="og:updated_time" content="2016-08-01T16:52:42.491Z">
+server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
+<meta property="og:updated_time" content="2016-08-02T03:10:52.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="客户端与服务端同步时间">
 <meta name="twitter:description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。
@@ -133,7 +133,7 @@ server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间�
 不同用户设置的时区不同
 
 解决办法
-server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不">
+server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
 
 
 
@@ -401,7 +401,7 @@ server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间�
 <li>不同用户设置的时区不同</li>
 </ol>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
-<li><strong>server</strong>当前的<code>Syetem.currentTimeMills()</code>发送给客户端，注意这个时间是UTC时间，和时区无关。还有后台如果要给客户端发送时间数据，不要用<strong>Date</strong>，而是发送一个<strong>long</strong>类型的整数。</li>
+<li><strong>server</strong>当前的<code>Syetem.currentTimeMills()</code>发送给客户端，注意这个时间是<a href="http://baike.baidu.com/link?url=DVReuC7Bq-ymYSvaYw3PGyEnl8Z6M8LZbJHlqtJSuxunMSrfB6JNq_sDlPOjQIpo9sSkdpLLTj--AG8CQcdx_lS4WwPdYJr7z3y9ti0OtcU9zhdHkRmv7AJzC6bTih7r" target="_blank" rel="external"><strong>UTC</strong></a>时间。还有后台如果要给客户端发送时间数据，不要用<strong>Date</strong>，而是发送一个<strong>long</strong>类型的整数。</li>
 <li><strong>client</strong>设置时区为<strong>GMT+8</strong>, <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));</code>,这里先考虑在东八区的情况，其他时区暂不考虑</li>
 <li><p>编写方法同步client和server的时间</p>
 <pre><code>private void asyncBetweenServerAndClientTime(long serverTime) {
