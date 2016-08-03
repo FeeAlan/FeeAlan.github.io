@@ -22,6 +22,9 @@
 <h2 id="获取开发版SHA1-KEY"><a href="#获取开发版SHA1-KEY" class="headerlink" title="获取开发版SHA1 KEY"></a>获取开发版SHA1 KEY</h2><ol>
 <li><p>输入以下命令</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -v -list -keystore C:\Users\Administrator\.android\debug.keystore</div></pre></td></tr></table></figure>
+<blockquote>
+<p>C:\Users\Administrator.android\debug.keystore  是debug签名文件的绝对路径，默认是在该位置</p>
+</blockquote>
 <p> 要输入密码时 密码为  <strong>android</strong></p>
 <a id="more"></a></li>
 </ol>
