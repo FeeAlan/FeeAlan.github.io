@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[java 线程学习(一)]]></title>
+      <url>https://feealan.github.io/2016/08/06/java-thread-study/</url>
+      <content type="html"><![CDATA[<p>一直一来对于java多线程的知识不是理解特别透彻，在此对线程知识进行一次整理，加深对多线程的理解，方便到实际应用中。</p>
+<h2 id="1-进程与线程"><a href="#1-进程与线程" class="headerlink" title="1. 进程与线程"></a>1. 进程与线程</h2><h3 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h3><p>操作系统中有多个程序，这里每个程序就是一个进程。进程指的是一个内存中运行的程序，每个进程都有自己独立的内存空间，一个进程可以启动多个线程。</p>
+<h3 id="2-线程"><a href="#2-线程" class="headerlink" title="2. 线程"></a>2. 线程</h3><p>指的是进程中的一个执行单元，一个进程可以有多个线程。多个线程可以共享一个进程中的内存。</p>
+<h3 id="3-举例-线程与进程的关系"><a href="#3-举例-线程与进程的关系" class="headerlink" title="3. 举例 线程与进程的关系"></a>3. 举例 线程与进程的关系</h3><p>把一个学校比作一个操作系统，班级比作是进程，班干部就是线程。一个学校里面可以有很多班级，相当于操作系统中有许多程序。各个班级都有自己的教室，即各个应用程序之间都存在一个独立的内存空间中。班级中班干部做不同的任务，即某一进程中，可以有许多线程，执行不同的任务。</p>
+<h2 id="2-java中的线程"><a href="#2-java中的线程" class="headerlink" title="2. java中的线程"></a>2. java中的线程</h2>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[android studio 申请百度地图获取appkey]]></title>
       <url>https://feealan.github.io/2016/08/03/baidumap-apply-for-appkey/</url>
       <content type="html"><![CDATA[<h2 id="获取发布版SHA1-key"><a href="#获取发布版SHA1-key" class="headerlink" title="获取发布版SHA1 key"></a>获取发布版SHA1 key</h2><ol>
