@@ -106,16 +106,34 @@
 
 
 
-<meta name="description" content="阻塞状态详解">
+<meta name="description" content="阻塞状态详解，即让线程离开运行状态，进入到就绪状态。
+1.休眠demo
+public class ThreadTest {
+    public static void main(String[] args) {
+        new Thread(){
+            public void run() {
+                long  t= System.current">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java 线程学习(二)">
+<meta property="og:title" content="Java 线程学习(二)">
 <meta property="og:url" content="https://feealan.github.io/2016/08/06/java-study-thread-two/index.html">
 <meta property="og:site_name" content="爱编程，爱生活">
-<meta property="og:description" content="阻塞状态详解">
-<meta property="og:updated_time" content="2016-08-06T15:59:50.688Z">
+<meta property="og:description" content="阻塞状态详解，即让线程离开运行状态，进入到就绪状态。
+1.休眠demo
+public class ThreadTest {
+    public static void main(String[] args) {
+        new Thread(){
+            public void run() {
+                long  t= System.current">
+<meta property="og:updated_time" content="2016-08-06T17:19:49.194Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java 线程学习(二)">
-<meta name="twitter:description" content="阻塞状态详解">
+<meta name="twitter:title" content="Java 线程学习(二)">
+<meta name="twitter:description" content="阻塞状态详解，即让线程离开运行状态，进入到就绪状态。
+1.休眠demo
+public class ThreadTest {
+    public static void main(String[] args) {
+        new Thread(){
+            public void run() {
+                long  t= System.current">
 
 
 
@@ -138,7 +156,7 @@
 
   <link rel="canonical" href="https://feealan.github.io/2016/08/06/java-study-thread-two/"/>
 
-  <title> java 线程学习(二) | 爱编程，爱生活 </title>
+  <title> Java 线程学习(二) | 爱编程，爱生活 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +329,7 @@
             
             
               
-                java 线程学习(二)
+                Java 线程学习(二)
               
             
           </h1>
@@ -389,7 +407,112 @@
       
 
       
-        <p>阻塞状态详解</p>
+        <p>阻塞状态详解，即让线程离开运行状态，进入到<strong>就绪</strong>状态。</p>
+<h2 id="1-休眠"><a href="#1-休眠" class="headerlink" title="1.休眠"></a>1.休眠</h2><p>demo</p>
+<pre><code>public class ThreadTest {
+    public static void main(String[] args) {
+        new Thread(){
+            public void run() {
+                long  t= System.currentTimeMillis(); 
+                System.out.println(&quot;current time:&quot;+t);
+                try {
+                    sleep(1000);
+                    System.out.println(&quot;current time:&quot;+System.currentTimeMillis());
+
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println(&quot;d_value:&quot; + (System.currentTimeMillis()-t));
+            };
+        }.start();
+    }
+}
+</code></pre><p>结果：</p>
+<pre><code>current time:1470501743081
+current time:1470501744081
+d_value:1000
+</code></pre><p>当前线程休眠1000 ms后继续执行。</p>
+<h2 id="2-线程的让步"><a href="#2-线程的让步" class="headerlink" title="2. 线程的让步"></a>2. 线程的让步</h2><p>调用Thread.yield();暂停当前线程，进入到就绪状态，执行其他线程。<br><a id="more"></a></p>
+<h2 id="3-线程的等待"><a href="#3-线程的等待" class="headerlink" title="3. 线程的等待"></a>3. 线程的等待</h2><p>调用Object.wait()；让线程挂起，等到执行notify()、notifyall()或者超时时被唤醒。wait有两种形式wait()和wait(milliseconds)。</p>
+<p>与sleep()的区别：</p>
+<ul>
+<li>这两个方法来自不同的类分别是Thread和Object</li>
+<li>最主要是sleep方法没有释放锁，而wait方法释放了锁，使得其他线程可以使用同步控制块或者方法。</li>
+<li><p>wait，notify和notifyAll只能在同步控制方法或者同步控制块里面使用，而sleep可以在</p>
+<pre><code>//任何地方使用
+synchronized(x){
+      x.notify()
+     //或者wait()
+}
+</code></pre></li>
+<li><p>sleep必须捕获异常，而wait，notify和notifyAll不需要捕获异常</p>
+</li>
+</ul>
+<h2 id="4-线程的加入"><a href="#4-线程的加入" class="headerlink" title="4.线程的加入"></a>4.线程的加入</h2><p>调用join()方法。让一个线程A加入到线程B的尾部，线程B不执行完，A线程不执行。</p>
+<pre><code>public class ThreadDemo {
+    public static void main(String[] args) {
+        System.out.println(&quot;main start&quot;);
+        final Thread thread_A = new Thread(new Runnable() {
+
+            public void run() {
+                // TODO Auto-generated method stub
+                for (int i = 0; i &lt; 10; i++) {
+                    System.out.println(&quot;a:&quot;+i);
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println(&quot;a:end&quot;);
+            }
+        });
+        Thread thread_B = new Thread(new Runnable() {
+
+            public void run() {
+                // TODO Auto-generated method stub
+                System.out.println(&quot;b  start&quot;);
+                try {
+                    thread_A.join();
+
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println(&quot;b end&quot;);
+            }
+        });
+        thread_A.start();
+        thread_B.start();
+        try {
+            thread_B.join();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        System.out.println(&quot;main end&quot;);
+    }    
+}
+</code></pre><p>结果：</p>
+<pre><code>main start
+b  start
+a:0
+a:1
+a:2
+a:3
+a:4
+a:5
+a:6
+a:7
+a:8
+a:9
+a:end
+b end
+main end
+</code></pre><p>结果分析：主线程加入线程B，必须等B执行完才继续工作。线程A加入线程B，线程B必须等A执行完毕再继续运行。</p>
 
       
     </div>
@@ -465,7 +588,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/08/06/java-study-thread-two/"
-           data-title="java 线程学习(二)" data-url="https://feealan.github.io/2016/08/06/java-study-thread-two/">
+           data-title="Java 线程学习(二)" data-url="https://feealan.github.io/2016/08/06/java-study-thread-two/">
       </div>
     
   </div>
@@ -590,7 +713,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-休眠"><span class="nav-number">1.</span> <span class="nav-text">1.休眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线程的让步"><span class="nav-number">2.</span> <span class="nav-text">2. 线程的让步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-线程的等待"><span class="nav-number">3.</span> <span class="nav-text">3. 线程的等待</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-线程的加入"><span class="nav-number">4.</span> <span class="nav-text">4.线程的加入</span></a></li></ol></div>
             
           </div>
         </section>

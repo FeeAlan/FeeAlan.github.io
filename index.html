@@ -314,7 +314,7 @@
               
                 
                 <a class="post-title-link" href="/2016/08/06/java-study-thread-two/" itemprop="url">
-                  java 线程学习(二)
+                  Java 线程学习(二)
                 </a>
               
             
@@ -394,10 +394,38 @@
 
       
         
-          
-            <p>阻塞状态详解</p>
+          <p>阻塞状态详解，即让线程离开运行状态，进入到<strong>就绪</strong>状态。</p>
+<h2 id="1-休眠"><a href="#1-休眠" class="headerlink" title="1.休眠"></a>1.休眠</h2><p>demo</p>
+<pre><code>public class ThreadTest {
+    public static void main(String[] args) {
+        new Thread(){
+            public void run() {
+                long  t= System.currentTimeMillis(); 
+                System.out.println(&quot;current time:&quot;+t);
+                try {
+                    sleep(1000);
+                    System.out.println(&quot;current time:&quot;+System.currentTimeMillis());
 
-          
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println(&quot;d_value:&quot; + (System.currentTimeMillis()-t));
+            };
+        }.start();
+    }
+}
+</code></pre><p>结果：</p>
+<pre><code>current time:1470501743081
+current time:1470501744081
+d_value:1000
+</code></pre><p>当前线程休眠1000 ms后继续执行。</p>
+<h2 id="2-线程的让步"><a href="#2-线程的让步" class="headerlink" title="2. 线程的让步"></a>2. 线程的让步</h2><p>调用Thread.yield();暂停当前线程，进入到就绪状态，执行其他线程。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/06/java-study-thread-two/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -527,7 +555,7 @@
       
         
           <p>一直一来对于java多线程的知识不是理解特别透彻，在此对线程知识进行一次整理，加深对多线程的理解，方便到实际应用中。</p>
-<h2 id="1-进程与线程"><a href="#1-进程与线程" class="headerlink" title="1. 进程与线程"></a>1. 进程与线程</h2><h3 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h3><p>操作系统中有多个程序，这里每个程序就是一个进程。进程指的是一个内存中运行的程序，每个进程都有自己独立的内存空间，一个进程可以启动多个线程。</p>
+<h2 id="一、-进程与线程"><a href="#一、-进程与线程" class="headerlink" title="一、 进程与线程"></a>一、 进程与线程</h2><h3 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h3><p>操作系统中有多个程序，这里每个程序就是一个进程。进程指的是一个内存中运行的程序，每个进程都有自己独立的内存空间，一个进程可以启动多个线程。</p>
 <h3 id="2-线程"><a href="#2-线程" class="headerlink" title="2. 线程"></a>2. 线程</h3><p>指的是进程中的一个执行单元，一个进程可以有多个线程。多个线程可以共享一个进程中的内存。</p>
 <h3 id="3-举例-线程与进程的关系"><a href="#3-举例-线程与进程的关系" class="headerlink" title="3. 举例 线程与进程的关系"></a>3. 举例 线程与进程的关系</h3><p>把一个学校比作一个操作系统，班级比作是<strong>进程</strong>，班干部就是<strong>线程</strong>。一个学校里面可以有很多班级，相当于操作系统中有许多程序。各个班级都有自己的教室，即各个应用程序之间都存在一个独立的 <strong>内存空间</strong>中。班级中班干部做不同的任务，即某一进程中，可以有许多线程，执行不同的任务。<br>
           <div class="post-more-link text-center">
