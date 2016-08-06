@@ -31,9 +31,20 @@
 <pre><code>current time:1470501743081
 current time:1470501744081
 d_value:1000
-</code></pre><p>当前线程休眠1000 ms后继续执行。</p>
-<h2 id="2-线程的让步"><a href="#2-线程的让步" class="headerlink" title="2. 线程的让步"></a>2. 线程的让步</h2><p>调用Thread.yield();暂停当前线程，进入到就绪状态，执行其他线程。<br><a id="more"></a></p>
-<h2 id="3-线程的等待"><a href="#3-线程的等待" class="headerlink" title="3. 线程的等待"></a>3. 线程的等待</h2><p>调用Object.wait()；让线程挂起，等到执行notify()、notifyall()或者超时时被唤醒。wait有两种形式wait()和wait(milliseconds)。</p>
+</code></pre><p>当前线程休眠1000 ms后继续执行。<br><a id="more"></a></p>
+<h2 id="2-线程的让步"><a href="#2-线程的让步" class="headerlink" title="2. 线程的让步"></a>2. 线程的让步</h2><p>调用Thread.yield();暂停当前线程，进入到就绪状态，执行其他线程。其他线程根据优先级优先执行，不过不一定会执行线程优先级高的线程。优先级为1~10的数字。</p>
+<p>设置线程优先级：</p>
+<pre><code>Thread t = new MyThread();
+t.setPriority(8);
+t.start();
+</code></pre><p>Thread类有三个优先级常量：</p>
+<pre><code>static int MAX_PRIORITY   对应的值是 10
+      线程可以具有的最高优先级。 
+static int MIN_PRIORITY   对应的值为 1
+      线程可以具有的最低优先级。 
+static int NORM_PRIORITY  对应的值为 5
+      分配给线程的默认优先级。
+</code></pre><h2 id="3-线程的等待"><a href="#3-线程的等待" class="headerlink" title="3. 线程的等待"></a>3. 线程的等待</h2><p>调用Object.wait()；让线程挂起，等到执行notify()、notifyall()或者超时时被唤醒。wait有两种形式wait()和wait(milliseconds)。</p>
 <p>与sleep()的区别：</p>
 <ul>
 <li>这两个方法来自不同的类分别是Thread和Object</li>
