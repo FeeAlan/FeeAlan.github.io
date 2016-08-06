@@ -133,7 +133,7 @@ main end
     </entry>
     
     <entry>
-      <title><![CDATA[java 线程学习(一)]]></title>
+      <title><![CDATA[Java 线程学习(一)]]></title>
       <url>https://feealan.github.io/2016/08/06/java-thread-study/</url>
       <content type="html"><![CDATA[<p>一直一来对于java多线程的知识不是理解特别透彻，在此对线程知识进行一次整理，加深对多线程的理解，方便到实际应用中。</p>
 <h2 id="一、-进程与线程"><a href="#一、-进程与线程" class="headerlink" title="一、 进程与线程"></a>一、 进程与线程</h2><h3 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h3><p>操作系统中有多个程序，这里每个程序就是一个进程。进程指的是一个内存中运行的程序，每个进程都有自己独立的内存空间，一个进程可以启动多个线程。</p>
