@@ -106,16 +106,40 @@
 
 
 
-<meta name="description" content="爱编程，爱生活">
+<meta name="description" content="线程的同步与锁1.问题线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。例如： 
+数据bean    
+public class DataBean {
+    private int d = 1000;
+    public int getD() {
+        return d;
+    }
+    public void setD(int x) {
+        this.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 线程学习(三)">
 <meta property="og:url" content="https://feealan.github.io/2016/08/07/java-study-thread-three/index.html">
 <meta property="og:site_name" content="爱编程，爱生活">
-<meta property="og:description" content="爱编程，爱生活">
-<meta property="og:updated_time" content="2016-08-06T17:26:50.039Z">
+<meta property="og:description" content="线程的同步与锁1.问题线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。例如： 
+数据bean    
+public class DataBean {
+    private int d = 1000;
+    public int getD() {
+        return d;
+    }
+    public void setD(int x) {
+        this.">
+<meta property="og:updated_time" content="2016-08-09T15:54:33.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 线程学习(三)">
-<meta name="twitter:description" content="爱编程，爱生活">
+<meta name="twitter:description" content="线程的同步与锁1.问题线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。例如： 
+数据bean    
+public class DataBean {
+    private int d = 1000;
+    public int getD() {
+        return d;
+    }
+    public void setD(int x) {
+        this.">
 
 
 
@@ -389,7 +413,46 @@
       
 
       
-        
+        <h1 id="线程的同步与锁"><a href="#线程的同步与锁" class="headerlink" title="线程的同步与锁"></a>线程的同步与锁</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h2><p>线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。<br>例如： </p>
+<p>数据bean    </p>
+<pre><code>public class DataBean {
+    private int d = 1000;
+    public int getD() {
+        return d;
+    }
+    public void setD(int x) {
+        this.d -= x ;
+    }
+}
+</code></pre><p>Runnable 接口</p>
+<pre><code>public class AsyncRunnable implements Runnable{
+    private DataBean dataBean = new DataBean();
+    public void run() {
+        for (int i = 0; i &lt; 3; i++) {
+            this.dataBean.setD(i*10);
+            System.out.println(Thread.currentThread().getName()+&quot; 当前d的值为：&quot;+ this.dataBean.getD());
+        }
+    }
+    public static void main(String[] args) {
+        AsyncRunnable runnable = new AsyncRunnable();
+        Thread thread_a = new Thread(runnable,&quot;thread_a&quot;);
+        Thread thread_b = new Thread(runnable,&quot;thread_b&quot;);
+
+        thread_a.start();
+        thread_b.start();
+
+    }
+}
+</code></pre><p>结果：</p>
+<pre><code>thread_a 当前d的值为：1000
+thread_b 当前d的值为：1000
+thread_b 当前d的值为：980
+thread_b 当前d的值为：960
+thread_a 当前d的值为：990
+thread_a 当前d的值为：940
+</code></pre><p>分析：</p>
+<p>很明显结果不对，而且每一次运行结果都不同。</p>
+
       
     </div>
 
@@ -589,7 +652,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程的同步与锁"><span class="nav-number">1.</span> <span class="nav-text">线程的同步与锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-问题"><span class="nav-number">1.1.</span> <span class="nav-text">1.问题</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
