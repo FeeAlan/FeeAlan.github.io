@@ -394,8 +394,7 @@
 
       
         
-          
-            <h1 id="线程的同步与锁"><a href="#线程的同步与锁" class="headerlink" title="线程的同步与锁"></a>线程的同步与锁</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h2><p>线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。<br>例如： </p>
+          <h1 id="线程的同步与锁"><a href="#线程的同步与锁" class="headerlink" title="线程的同步与锁"></a>线程的同步与锁</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h2><p>线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。<br>例如： </p>
 <p>数据bean    </p>
 <pre><code>public class DataBean {
     private int d = 1000;
@@ -433,9 +432,12 @@ thread_b 当前d的值为：960
 thread_a 当前d的值为：990
 thread_a 当前d的值为：940
 </code></pre><p>分析：</p>
-<p>很明显结果不对，而且每一次运行结果都不同。</p>
-
-          
+<p>很明显结果不对，而且每一次运行结果都不同。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/07/java-study-thread-three/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
