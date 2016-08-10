@@ -10,8 +10,16 @@
 <blockquote>
 <p>更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞</p>
 </blockquote>
-<p>如果在主线程做耗时操作则会报错：</p>
-]]></content>
+<p>如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为</p>
+<pre><code>I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main thread.
+</code></pre><p>如果在子线程更新UI则会报错：</p>
+<pre><code>FATAL EXCEPTION: Thread-109 
+Process: com.feealan.blogtestdemo, PID: 8333  
+android.view.ViewRootImp$CalledFromWrongThreadException:
+ Only the original thread that created a view hierarchy can touch its views.
+</code></pre><h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><p>通常在进行网络操作时，因为网络速率等一些原因，这一步操作的时间是未知的，因此一般把网络请求放到子线程中去做。那么这里就存在一个问题：<strong>请求到的数据如何显示到UI控件上？</strong></p>
+<h2 id="二、寻求解决办法"><a href="#二、寻求解决办法" class="headerlink" title="二、寻求解决办法"></a>二、寻求解决办法</h2><p>android 系统根据这种情况专门设置的Handler机制，面对这种情况就轻而易举了。<br><a id="more"></a></p>
+<h2 id="三、Handler机制"><a href="#三、Handler机制" class="headerlink" title="三、Handler机制"></a>三、Handler机制</h2>]]></content>
     </entry>
     
     <entry>

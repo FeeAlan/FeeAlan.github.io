@@ -110,7 +110,8 @@
 
 更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞
 
-如果在主线程做耗时操作则会报错：">
+如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为
+I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android 中线程的使用">
 <meta property="og:url" content="https://feealan.github.io/2016/08/10/android-thread-study/index.html">
@@ -119,15 +120,17 @@
 
 更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞
 
-如果在主线程做耗时操作则会报错：">
-<meta property="og:updated_time" content="2016-08-10T15:57:56.495Z">
+如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为
+I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
+<meta property="og:updated_time" content="2016-08-10T16:18:44.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android 中线程的使用">
 <meta name="twitter:description" content="在android 4.0设置了一个规则：
 
 更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞
 
-如果在主线程做耗时操作则会报错：">
+如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为
+I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
 
 
 
@@ -393,8 +396,16 @@
 <blockquote>
 <p>更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞</p>
 </blockquote>
-<p>如果在主线程做耗时操作则会报错：</p>
-
+<p>如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为</p>
+<pre><code>I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main thread.
+</code></pre><p>如果在子线程更新UI则会报错：</p>
+<pre><code>FATAL EXCEPTION: Thread-109 
+Process: com.feealan.blogtestdemo, PID: 8333  
+android.view.ViewRootImp$CalledFromWrongThreadException:
+ Only the original thread that created a view hierarchy can touch its views.
+</code></pre><h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><p>通常在进行网络操作时，因为网络速率等一些原因，这一步操作的时间是未知的，因此一般把网络请求放到子线程中去做。那么这里就存在一个问题：<strong>请求到的数据如何显示到UI控件上？</strong></p>
+<h2 id="二、寻求解决办法"><a href="#二、寻求解决办法" class="headerlink" title="二、寻求解决办法"></a>二、寻求解决办法</h2><p>android 系统根据这种情况专门设置的Handler机制，面对这种情况就轻而易举了。<br><a id="more"></a></p>
+<h2 id="三、Handler机制"><a href="#三、Handler机制" class="headerlink" title="三、Handler机制"></a>三、Handler机制</h2>
       
     </div>
 
@@ -596,7 +607,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、问题"><span class="nav-number">1.</span> <span class="nav-text">一、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、寻求解决办法"><span class="nav-number">2.</span> <span class="nav-text">二、寻求解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Handler机制"><span class="nav-number">3.</span> <span class="nav-text">三、Handler机制</span></a></li></ol></div>
             
           </div>
         </section>
