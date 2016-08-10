@@ -45,7 +45,9 @@ thread_a 当前d的值为：990
 thread_a 当前d的值为：940
 </code></pre><p>分析：</p>
 <p>很明显结果不对，而且每一次运行结果都不同。<br><a id="more"></a></p>
-<h2 id="2-解决问题"><a href="#2-解决问题" class="headerlink" title="2.解决问题"></a>2.解决问题</h2>]]></content>
+<h2 id="2-解决问题"><a href="#2-解决问题" class="headerlink" title="2.解决问题"></a>2.解决问题</h2><p>就是将对数据Bean的访问加以限制，每次只能有一个线程在访问。</p>
+<p>//todo  理解还不透彻</p>
+]]></content>
     </entry>
     
     <entry>
