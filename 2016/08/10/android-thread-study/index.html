@@ -113,7 +113,7 @@
 如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为
 I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android 中线程的使用">
+<meta property="og:title" content="android 中线程的使用：更新UI">
 <meta property="og:url" content="https://feealan.github.io/2016/08/10/android-thread-study/index.html">
 <meta property="og:site_name" content="爱编程，爱生活">
 <meta property="og:description" content="在android 4.0设置了一个规则：
@@ -122,9 +122,9 @@ I/Choreographer: Skipped 3000 frames!  The application may be doing too much wor
 
 如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为
 I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
-<meta property="og:updated_time" content="2016-08-10T16:18:44.281Z">
+<meta property="og:updated_time" content="2016-08-10T17:14:12.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android 中线程的使用">
+<meta name="twitter:title" content="android 中线程的使用：更新UI">
 <meta name="twitter:description" content="在android 4.0设置了一个规则：
 
 更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞
@@ -153,7 +153,7 @@ I/Choreographer: Skipped 3000 frames!  The application may be doing too much wor
 
   <link rel="canonical" href="https://feealan.github.io/2016/08/10/android-thread-study/"/>
 
-  <title> android 中线程的使用 | 爱编程，爱生活 </title>
+  <title> android 中线程的使用：更新UI | 爱编程，爱生活 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -326,7 +326,7 @@ I/Choreographer: Skipped 3000 frames!  The application may be doing too much wor
             
             
               
-                android 中线程的使用
+                android 中线程的使用：更新UI
               
             
           </h1>
@@ -405,7 +405,86 @@ android.view.ViewRootImp$CalledFromWrongThreadException:
  Only the original thread that created a view hierarchy can touch its views.
 </code></pre><h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><p>通常在进行网络操作时，因为网络速率等一些原因，这一步操作的时间是未知的，因此一般把网络请求放到子线程中去做。那么这里就存在一个问题：<strong>请求到的数据如何显示到UI控件上？</strong></p>
 <h2 id="二、寻求解决办法"><a href="#二、寻求解决办法" class="headerlink" title="二、寻求解决办法"></a>二、寻求解决办法</h2><p>android 系统根据这种情况专门设置的Handler机制，面对这种情况就轻而易举了。<br><a id="more"></a></p>
-<h2 id="三、Handler机制"><a href="#三、Handler机制" class="headerlink" title="三、Handler机制"></a>三、Handler机制</h2>
+<h2 id="三、Handler机制"><a href="#三、Handler机制" class="headerlink" title="三、Handler机制"></a>三、Handler机制</h2><p>网上关于这方面的文章很多，主要有几点：<strong>Looper</strong> 、<strong>Handler</strong> 、<strong>Message</strong>.</p>
+<ul>
+<li><strong>Looper</strong> 主要有两个方法：<strong>prepare（）</strong>、<strong>loop()</strong>。<strong>prepare()</strong>方法会创建一个<strong>MessageQueue</strong>消息队列，<strong>loop()</strong>方法则是不断的去<strong>MessageQueue</strong>消息队列中取消息交给<strong>target</strong>的<strong>dispatchMessage</strong>去处理。</li>
+<li><strong>Message</strong> 即消息实体，存放数据的地方</li>
+<li><strong>Handler</strong> 处理和发送消息的类。主要有两个方法 sendMessage()、handleMessage().即一个发送数据，一个处理数据。</li>
+</ul>
+<h2 id="四、解决问题的几种方式"><a href="#四、解决问题的几种方式" class="headerlink" title="四、解决问题的几种方式"></a>四、解决问题的几种方式</h2><ol>
+<li><p>使用handler，子线程中拿到数据，通过handler发送数据，在主线程加载数据。</p>
+<pre><code>new Thread(){
+    @Override
+    public void run() {
+      super.run();
+      handler.sendEmptyMessage(1);
+       }
+}.start();
+
+private Handler handler = new Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+        super.handleMessage(msg);
+        Toast.makeText(UpdataUiAct.this,&quot;hello world&quot;,Toast.LENGTH_SHORT).show();
+    }
+};
+</code></pre></li>
+<li><p>使用activity的runOnUiThread()方法在子线程更新UI。</p>
+<pre><code>new Thread(){
+      @Override
+      public void run() {
+          super.run();
+          runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                   Toast.makeText(UpdataUiAct.this, &quot;hello world&quot;, Toast.LENGTH_SHORT).show();
+               }
+            });
+          }
+}.start();
+</code></pre></li>
+<li><p>使用View.post(Runnable r)方法</p>
+<pre><code>new Thread(){
+   @Override
+   public void run() {
+      super.run();
+      btn.post(new Runnable() {
+         @Override
+         public void run() {
+            Toast.makeText(UpdataUiAct.this, &quot;hello world&quot;, Toast.LENGTH_SHORT).show();
+        }
+     });
+  }
+}.start();
+</code></pre></li>
+<li><p>使用AsyncTask </p>
+<pre><code> class myAsync extends AsyncTask&lt;Void,Void,Void&gt;{
+
+    @Override
+    protected Void doInBackground(Void... voids) {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        Toast.makeText(UpdataUiAct.this, &quot;hello world&quot;, Toast.LENGTH_SHORT).show();
+    }
+}
+</code></pre></li>
+<li>使用Eventbus<br> <a href="http://blog.csdn.net/harvic880925/article/details/40660137" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/40660137</a></li>
+<li><p>使用广播</p>
+<p> 在子线程获取到数据后，发送广播，把数据通过intent传递过去，在数据接收的地方接收广播。</p>
+<p> 其实时间总线框架内部使用的广播机制，并进行了很好的封装。</p>
+</li>
+</ol>
+<p>总结：android里更新UI，其实就是线程间的数据交互。android本身提供了一套很好的消息机制。</p>
+
       
     </div>
 
@@ -482,7 +561,7 @@ android.view.ViewRootImp$CalledFromWrongThreadException:
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/08/10/android-thread-study/"
-           data-title="android 中线程的使用" data-url="https://feealan.github.io/2016/08/10/android-thread-study/">
+           data-title="android 中线程的使用：更新UI" data-url="https://feealan.github.io/2016/08/10/android-thread-study/">
       </div>
     
   </div>
@@ -607,7 +686,7 @@ android.view.ViewRootImp$CalledFromWrongThreadException:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、问题"><span class="nav-number">1.</span> <span class="nav-text">一、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、寻求解决办法"><span class="nav-number">2.</span> <span class="nav-text">二、寻求解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Handler机制"><span class="nav-number">3.</span> <span class="nav-text">三、Handler机制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、问题"><span class="nav-number">1.</span> <span class="nav-text">一、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、寻求解决办法"><span class="nav-number">2.</span> <span class="nav-text">二、寻求解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Handler机制"><span class="nav-number">3.</span> <span class="nav-text">三、Handler机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、解决问题的几种方式"><span class="nav-number">4.</span> <span class="nav-text">四、解决问题的几种方式</span></a></li></ol></div>
             
           </div>
         </section>

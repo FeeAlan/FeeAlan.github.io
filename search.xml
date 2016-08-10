@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[android 中线程的使用]]></title>
+      <title><![CDATA[android 中线程的使用：更新UI]]></title>
       <url>https://feealan.github.io/2016/08/10/android-thread-study/</url>
       <content type="html"><![CDATA[<p>在android 4.0设置了一个规则：</p>
 <blockquote>
@@ -19,7 +19,86 @@ android.view.ViewRootImp$CalledFromWrongThreadException:
  Only the original thread that created a view hierarchy can touch its views.
 </code></pre><h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><p>通常在进行网络操作时，因为网络速率等一些原因，这一步操作的时间是未知的，因此一般把网络请求放到子线程中去做。那么这里就存在一个问题：<strong>请求到的数据如何显示到UI控件上？</strong></p>
 <h2 id="二、寻求解决办法"><a href="#二、寻求解决办法" class="headerlink" title="二、寻求解决办法"></a>二、寻求解决办法</h2><p>android 系统根据这种情况专门设置的Handler机制，面对这种情况就轻而易举了。<br><a id="more"></a></p>
-<h2 id="三、Handler机制"><a href="#三、Handler机制" class="headerlink" title="三、Handler机制"></a>三、Handler机制</h2>]]></content>
+<h2 id="三、Handler机制"><a href="#三、Handler机制" class="headerlink" title="三、Handler机制"></a>三、Handler机制</h2><p>网上关于这方面的文章很多，主要有几点：<strong>Looper</strong> 、<strong>Handler</strong> 、<strong>Message</strong>.</p>
+<ul>
+<li><strong>Looper</strong> 主要有两个方法：<strong>prepare（）</strong>、<strong>loop()</strong>。<strong>prepare()</strong>方法会创建一个<strong>MessageQueue</strong>消息队列，<strong>loop()</strong>方法则是不断的去<strong>MessageQueue</strong>消息队列中取消息交给<strong>target</strong>的<strong>dispatchMessage</strong>去处理。</li>
+<li><strong>Message</strong> 即消息实体，存放数据的地方</li>
+<li><strong>Handler</strong> 处理和发送消息的类。主要有两个方法 sendMessage()、handleMessage().即一个发送数据，一个处理数据。</li>
+</ul>
+<h2 id="四、解决问题的几种方式"><a href="#四、解决问题的几种方式" class="headerlink" title="四、解决问题的几种方式"></a>四、解决问题的几种方式</h2><ol>
+<li><p>使用handler，子线程中拿到数据，通过handler发送数据，在主线程加载数据。</p>
+<pre><code>new Thread(){
+    @Override
+    public void run() {
+      super.run();
+      handler.sendEmptyMessage(1);
+       }
+}.start();
+
+private Handler handler = new Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+        super.handleMessage(msg);
+        Toast.makeText(UpdataUiAct.this,&quot;hello world&quot;,Toast.LENGTH_SHORT).show();
+    }
+};
+</code></pre></li>
+<li><p>使用activity的runOnUiThread()方法在子线程更新UI。</p>
+<pre><code>new Thread(){
+      @Override
+      public void run() {
+          super.run();
+          runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                   Toast.makeText(UpdataUiAct.this, &quot;hello world&quot;, Toast.LENGTH_SHORT).show();
+               }
+            });
+          }
+}.start();
+</code></pre></li>
+<li><p>使用View.post(Runnable r)方法</p>
+<pre><code>new Thread(){
+   @Override
+   public void run() {
+      super.run();
+      btn.post(new Runnable() {
+         @Override
+         public void run() {
+            Toast.makeText(UpdataUiAct.this, &quot;hello world&quot;, Toast.LENGTH_SHORT).show();
+        }
+     });
+  }
+}.start();
+</code></pre></li>
+<li><p>使用AsyncTask </p>
+<pre><code> class myAsync extends AsyncTask&lt;Void,Void,Void&gt;{
+
+    @Override
+    protected Void doInBackground(Void... voids) {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        Toast.makeText(UpdataUiAct.this, &quot;hello world&quot;, Toast.LENGTH_SHORT).show();
+    }
+}
+</code></pre></li>
+<li>使用Eventbus<br> <a href="http://blog.csdn.net/harvic880925/article/details/40660137" target="_blank" rel="external">http://blog.csdn.net/harvic880925/article/details/40660137</a></li>
+<li><p>使用广播</p>
+<p> 在子线程获取到数据后，发送广播，把数据通过intent传递过去，在数据接收的地方接收广播。</p>
+<p> 其实时间总线框架内部使用的广播机制，并进行了很好的封装。</p>
+</li>
+</ol>
+<p>总结：android里更新UI，其实就是线程间的数据交互。android本身提供了一套很好的消息机制。</p>
+]]></content>
     </entry>
     
     <entry>
