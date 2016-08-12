@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[http protocol]]></title>
+      <url>https://feealan.github.io/2016/08/12/http-protocol/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[android 中线程的使用：更新UI]]></title>
       <url>https://feealan.github.io/2016/08/10/android-thread-study/</url>
       <content type="html"><![CDATA[<p>在android 4.0设置了一个规则：</p>
