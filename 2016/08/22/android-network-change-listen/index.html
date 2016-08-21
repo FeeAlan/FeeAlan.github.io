@@ -90,7 +90,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android,image,compress," />
+  <meta name="keywords" content="network,broadcastreciver," />
 
 
 
@@ -106,16 +106,34 @@
 
 
 
-<meta name="description" content="问题">
+<meta name="description" content="一、问题
+判断用户是否联网
+判断用户的网络环境，根据网络环境做数据加载的调整。例如：在wifi环境下做视频播放、大文件下载、多图加载、加载数据量增加等等，而在移动网络则为用户节省流量。
+
+二、怎么解决问题
+判断手机的网络状态（无连接、移动网络、wifi）
+当手机网络状态改变时发送广播">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android 图片处理">
-<meta property="og:url" content="https://feealan.github.io/2016/07/31/android-image-compress/index.html">
+<meta property="og:title" content="android 网络环境监听">
+<meta property="og:url" content="https://feealan.github.io/2016/08/22/android-network-change-listen/index.html">
 <meta property="og:site_name" content="爱编程，爱生活">
-<meta property="og:description" content="问题">
-<meta property="og:updated_time" content="2016-08-04T15:56:16.628Z">
+<meta property="og:description" content="一、问题
+判断用户是否联网
+判断用户的网络环境，根据网络环境做数据加载的调整。例如：在wifi环境下做视频播放、大文件下载、多图加载、加载数据量增加等等，而在移动网络则为用户节省流量。
+
+二、怎么解决问题
+判断手机的网络状态（无连接、移动网络、wifi）
+当手机网络状态改变时发送广播">
+<meta property="og:updated_time" content="2016-08-21T17:33:15.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android 图片处理">
-<meta name="twitter:description" content="问题">
+<meta name="twitter:title" content="android 网络环境监听">
+<meta name="twitter:description" content="一、问题
+判断用户是否联网
+判断用户的网络环境，根据网络环境做数据加载的调整。例如：在wifi环境下做视频播放、大文件下载、多图加载、加载数据量增加等等，而在移动网络则为用户节省流量。
+
+二、怎么解决问题
+判断手机的网络状态（无连接、移动网络、wifi）
+当手机网络状态改变时发送广播">
 
 
 
@@ -136,9 +154,9 @@
 
 
 
-  <link rel="canonical" href="https://feealan.github.io/2016/07/31/android-image-compress/"/>
+  <link rel="canonical" href="https://feealan.github.io/2016/08/22/android-network-change-listen/"/>
 
-  <title> android 图片处理 | 爱编程，爱生活 </title>
+  <title> android 网络环境监听 | 爱编程，爱生活 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +329,7 @@
             
             
               
-                android 图片处理
+                android 网络环境监听
               
             
           </h1>
@@ -323,8 +341,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-31T00:40:30+08:00" content="2016-07-31">
-              2016-07-31
+            <time itemprop="dateCreated" datetime="2016-08-22T01:14:19+08:00" content="2016-08-22">
+              2016-08-22
             </time>
           </span>
 
@@ -353,8 +371,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/31/android-image-compress/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/android-image-compress/" itemprop="commentsCount"></span>
+                <a href="/2016/08/22/android-network-change-listen/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/22/android-network-change-listen/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -377,8 +395,155 @@
       
 
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><a id="more"></a>
+        <h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><ol>
+<li>判断用户是否联网</li>
+<li>判断用户的网络环境，根据网络环境做数据加载的调整。例如：在wifi环境下做视频播放、大文件下载、多图加载、加载数据量增加等等，而在移动网络则为用户节省流量。</li>
+</ol>
+<h2 id="二、怎么解决问题"><a href="#二、怎么解决问题" class="headerlink" title="二、怎么解决问题"></a>二、怎么解决问题</h2><ol>
+<li>判断手机的网络状态（无连接、移动网络、wifi）</li>
+<li>当手机网络状态改变时发送广播<a id="more"></a>
+</li>
+</ol>
+<h2 id="三、解决问题"><a href="#三、解决问题" class="headerlink" title="三、解决问题"></a>三、解决问题</h2><h3 id="1-编写网络状态管理器NetWorkManger"><a href="#1-编写网络状态管理器NetWorkManger" class="headerlink" title="1.编写网络状态管理器NetWorkManger"></a>1.编写网络状态管理器<strong>NetWorkManger</strong></h3><pre><code>    /**
+     * 网络环境管理器
+     */
+public class NetWorkManger {
+    /**
+     * wifi 网络
+     */
+    public static final int NETWORK_TYPE_WIFI   = 0;
+    /**
+     * 2G 网络
+     */
+    public static final int NETWORK_TYPE_2G     = 1;
+    /**
+     * 3G 网络
+     */
+    public static final int NETWORK_TYPE_3G     = 2;
+    /**
+     * 4G 网络
+     */
+    public static final int NETWORK_TYPE_4G     = 3;
+    /**
+     * 无 网络
+     */
+    public static final int NETWORK_TYPE_INVALID = 4;
+    /**
+     * 网络是否连接
+     *
+     * @param context
+     * @return
+     */
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo         info = cm.getActiveNetworkInfo();
+        return info != null &amp;&amp; info.isConnected();
 
+    }
+
+    /**
+     * 获取网络类型
+     * @param context
+     * @return
+     */
+    public static int getNetworkType(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo         networkInfo         = connectivityManager.getActiveNetworkInfo();
+        int networkType = 0;
+        if (networkInfo != null &amp;&amp; networkInfo.isConnected()) {
+            String type = networkInfo.getTypeName();
+            if (type.equalsIgnoreCase(&quot;WIFI&quot;)) {
+                networkType = NETWORK_TYPE_WIFI;
+            } else if (type.equalsIgnoreCase(&quot;MOBILE&quot;)) {
+                networkType = getMobileNetworkType(context);
+            }
+        } else {
+            networkType = NETWORK_TYPE_INVALID;
+        }
+        return networkType;
+    }
+
+
+    /**
+     * 判断在手机网络的情况下的网络类型
+     *
+     * @param context
+     * @return
+     */
+    private static int getMobileNetworkType(Context context) {
+        TelephonyManager mTelephonyManager = (TelephonyManager)
+                context.getSystemService(Context.TELEPHONY_SERVICE);
+        int networkType = mTelephonyManager.getNetworkType();
+        switch (networkType) {
+            case TelephonyManager.NETWORK_TYPE_GPRS:
+            case TelephonyManager.NETWORK_TYPE_EDGE:
+            case TelephonyManager.NETWORK_TYPE_CDMA:
+            case TelephonyManager.NETWORK_TYPE_1xRTT:
+            case TelephonyManager.NETWORK_TYPE_IDEN:
+                return NETWORK_TYPE_2G;
+            case TelephonyManager.NETWORK_TYPE_UMTS:
+            case TelephonyManager.NETWORK_TYPE_EVDO_0:
+            case TelephonyManager.NETWORK_TYPE_EVDO_A:
+            case TelephonyManager.NETWORK_TYPE_HSDPA:
+            case TelephonyManager.NETWORK_TYPE_HSUPA:
+            case TelephonyManager.NETWORK_TYPE_HSPA:
+            case TelephonyManager.NETWORK_TYPE_EVDO_B:
+            case TelephonyManager.NETWORK_TYPE_EHRPD:
+            case TelephonyManager.NETWORK_TYPE_HSPAP:
+                return NETWORK_TYPE_3G;
+            case TelephonyManager.NETWORK_TYPE_LTE:
+                return NETWORK_TYPE_4G;
+            default:
+                return NETWORK_TYPE_INVALID;
+        }
+    }
+
+}
+</code></pre><h3 id="2-自定义一个网络状态改变接收器NetworkChangedReceiver"><a href="#2-自定义一个网络状态改变接收器NetworkChangedReceiver" class="headerlink" title="2.自定义一个网络状态改变接收器NetworkChangedReceiver"></a>2.自定义一个网络状态改变接收器<strong>NetworkChangedReceiver</strong></h3><pre><code>    /**
+     * 网络改变接收器
+     */
+public class NetworkChangedReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (!NetWorkManger.isNetworkConnected(context)) {
+            Toast.makeText(context, &quot;无网络连接&quot;, Toast.LENGTH_SHORT).show();
+        } else {
+            int networkType = NetWorkManger.getNetworkType(context);
+            switch (networkType) {
+                case NetWorkManger.NETWORK_TYPE_4G:
+                case NetWorkManger.NETWORK_TYPE_3G:
+                case NetWorkManger.NETWORK_TYPE_2G:
+                    Toast.makeText(context, &quot;您当前处于移动网络&quot;, Toast.LENGTH_SHORT).show();
+                    break;
+                case NetWorkManger.NETWORK_TYPE_WIFI:
+                    Toast.makeText(context, &quot;您当前处于wifi网络&quot;, Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    }
+}
+</code></pre><h3 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h3><p>一般卸载基类<strong>BaseActivity</strong>中，在onCreate()中注册广播，在onDestroy()中注销广播。</p>
+<pre><code> /**
+  * 注册广播
+  */
+private void registerBroadcast() {
+    IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+    changedBroadcast = new NetworkChangedReceiver();
+    this.registerReceiver(changedBroadcast, filter);
+}
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    //注销广播
+    this.unregisterReceiver(changedBroadcast);
+}
+</code></pre><p>注意在清单文件中设置权限</p>
+<pre><code>&lt;!--检测网络状态权限--&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+&lt;!--网络请求权限--&gt;
+&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+</code></pre>
       
     </div>
 
@@ -400,11 +565,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag">#android</a>
+            <a href="/tags/network/" rel="tag">#network</a>
           
-            <a href="/tags/image/" rel="tag">#image</a>
-          
-            <a href="/tags/compress/" rel="tag">#compress</a>
+            <a href="/tags/broadcastreciver/" rel="tag">#broadcastreciver</a>
           
         </div>
       
@@ -413,17 +576,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/24/android-html-post/" rel="next" title="android 表单提交">
-                <i class="fa fa-chevron-left"></i> android 表单提交
+              <a href="/2016/08/10/android-thread-study/" rel="next" title="android 中线程的使用：更新UI">
+                <i class="fa fa-chevron-left"></i> android 中线程的使用：更新UI
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/31/hexo-new-post-auto-open-markdown/" rel="prev" title="hexo发布新文章是自动打开编辑器">
-                hexo发布新文章是自动打开编辑器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -458,8 +617,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/31/android-image-compress/"
-           data-title="android 图片处理" data-url="https://feealan.github.io/2016/07/31/android-image-compress/">
+      <div class="ds-thread" data-thread-key="2016/08/22/android-network-change-listen/"
+           data-title="android 网络环境监听" data-url="https://feealan.github.io/2016/08/22/android-network-change-listen/">
       </div>
     
   </div>
@@ -584,7 +743,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、问题"><span class="nav-number">1.</span> <span class="nav-text">一、问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、怎么解决问题"><span class="nav-number">2.</span> <span class="nav-text">二、怎么解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、解决问题"><span class="nav-number">3.</span> <span class="nav-text">三、解决问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-编写网络状态管理器NetWorkManger"><span class="nav-number">3.1.</span> <span class="nav-text">1.编写网络状态管理器NetWorkManger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-自定义一个网络状态改变接收器NetworkChangedReceiver"><span class="nav-number">3.2.</span> <span class="nav-text">2.自定义一个网络状态改变接收器NetworkChangedReceiver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用"><span class="nav-number">3.3.</span> <span class="nav-text">3.使用</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
