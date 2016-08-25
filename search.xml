@@ -4,6 +4,179 @@
   
     
     <entry>
+      <title><![CDATA[android BroadcastReciver]]></title>
+      <url>https://feealan.github.io/2016/08/25/android-broadcast/</url>
+      <content type="html"><![CDATA[<p><strong>android 系统的广播机制</strong></p>
+<h2 id="一、广播机制简介"><a href="#一、广播机制简介" class="headerlink" title="一、广播机制简介"></a>一、广播机制简介</h2><p>android四大组件之一，是一种全局监听器，用于监听系统全局，可以接收来自系统和应用的广播。同时也能发送广播给其他应用。</p>
+<h2 id="二、广播分类"><a href="#二、广播分类" class="headerlink" title="二、广播分类"></a>二、广播分类</h2><ol>
+<li>标准广播：一种完全异步执行的广播，在广播发出之后，所有的广播接收器几乎都会在同一时间接收到这条广播消息，因此它们之间没有任何先后顺序可言。这种广播的效率比较高，无法被截断。</li>
+<li>有序广播：一种同步执行的广播，在广播发出之后，同一时刻只会有一个广播接收器能够接收到这条广播消息，当这条广播接收器的逻辑执行完之后，广播消息才会继续传递。通过设置接收器的优先级，可以实现这一功能。优先级高的广播可以先接收到，同时还能截断该广播不往下传递。<a id="more"></a>
+</li>
+</ol>
+<h2 id="三、-广播的使用"><a href="#三、-广播的使用" class="headerlink" title="三、 广播的使用"></a>三、 广播的使用</h2><h3 id="1）广播的注册方式"><a href="#1）广播的注册方式" class="headerlink" title="1）广播的注册方式"></a>1）广播的注册方式</h3><h4 id="1-静态注册"><a href="#1-静态注册" class="headerlink" title="1.静态注册"></a>1.<a name="section1" id="section1">静态注册</a></h4><pre><code>a. 写一个类继承BroadcastReceiver
+
+    public class MyReceiver extends BroadcastReceiver {
+        public MyReceiver() {
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            Toast.makeText(context,&quot;......&quot;,Toast.LENGTH_SHORT).show();
+        }
+    }
+b. 在AndroidManifest.xml中注册
+
+    &lt;receiver android:name=&quot;com.feealan.blogtestdemo.MyReceiver&quot;&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;/&gt;
+        &lt;/intent-filter&gt;
+    &lt;/receiver&gt;
+c. 使用
+
+    private void sendBroadcast() {
+        Intent intent = new Intent();
+        intent.setAction(&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;);
+        sendBroadcast(intent);
+    }
+</code></pre><p> 总结：不管该应用是否启动，都会对其进行监听。</p>
+<h4 id="2-动态注册"><a href="#2-动态注册" class="headerlink" title="2.动态注册"></a>2.动态注册</h4><pre><code>a. 写一个类继承BroadcastReceiver
+
+    public class MyReceiver extends BroadcastReceiver {
+        public MyReceiver() {
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            Toast.makeText(context,&quot;......&quot;,Toast.LENGTH_SHORT).show();
+        }
+    }
+b. 在AndroidManifest.xml中注册
+
+        &lt;receiver android:name=&quot;com.feealan.blogtestdemo.MyReceiver&quot;&gt;
+            &lt;intent-filter &gt;
+                &lt;action android:name=&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;/&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+c. 直接使用
+
+    //注册广播
+    private void registerBroadcast() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;);
+        MyReceiver receiver = new MyReceiver();
+        registerReceiver(receiver, filter);
+    }
+
+    //发送广播
+    private void sendBroadcast() {
+        Intent intent = new Intent();
+        intent.setAction(&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;);
+        sendBroadcast(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //注销广播
+        unregisterReceiver(receiver);
+    }
+
+总结：在代码中进行注册后，当应用程序关闭后，就不再进行监听
+</code></pre><h3 id="2）广播的应用"><a href="#2）广播的应用" class="headerlink" title="2）广播的应用"></a>2）广播的应用</h3><h4 id="1-接收系统的广播"><a href="#1-接收系统的广播" class="headerlink" title="1.接收系统的广播"></a>1.接收系统的广播</h4><pre><code>请查看这篇文章 [**android 网络环境监听**](/2016/08/22/android-network-change-listen/index.html)
+</code></pre><h4 id="2-发送自定义广播"><a href="#2-发送自定义广播" class="headerlink" title="2.发送自定义广播"></a>2.发送自定义广播</h4><pre><code>* 标准广播请看[广播的静态注册](#section1)
+* 有序广播
+
+    a. 写一个类继承BroadcastReceiver
+
+        public class MyReceiver extends BroadcastReceiver {
+            public MyReceiver() {
+            }
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                Toast.makeText(context,&quot;......&quot;,Toast.LENGTH_SHORT).show();
+            }
+        }
+    b. 在AndroidManifest.xml中注册
+
+        &lt;receiver android:name=&quot;com.feealan.blogtestdemo.MyReceiver&quot;&gt;
+            &lt;intent-filter android:priority=&quot;100&quot;&gt;
+                &lt;action android:name=&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;/&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+    这里设置了优先级为100.这样该接收器可以比 **优先级** 比他低的 接收器先接收到到广播
+
+    c. 使用
+
+        private void sendBroadcast() {
+            Intent intent = new Intent();
+            intent.setAction(&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;);
+             sendOrderedBroadcast(intent,null);
+            //添加下面这句则截断广播
+            //abortBroadcast();
+        }
+</code></pre><h4 id="3-本地广播"><a href="#3-本地广播" class="headerlink" title="3.本地广播"></a>3.本地广播</h4><pre><code>上面注册的广播都是全局性质的，系统所有的应用只要知道广播的**action**都会可以接收到该广播。如果该广播要传递重要的数据则会有安全问题，所以android系统引入了本地广播机制，该广播只能在应用内部使用。本地广播无法通过静态注册方式来注册接收。
+
+a. 写一个类继承BroadcastReceiver
+
+    public class LocalReciver extends BroadcastReceiver {
+        public LocalReciver() {
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            Toast.makeText(context,&quot;......&quot;,Toast.LENGTH_SHORT).show();
+        }
+    }
+b. 在AndroidManifest.xml中注册
+
+        &lt;receiver android:name=&quot;com.feealan.blogtestdemo.LocalReciver&quot;&gt;
+            &lt;intent-filter &gt;
+                &lt;action android:name=&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;/&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+
+c. 直接使用
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initView();
+        //初始化本地广播管理器
+        broadcastManager = LocalBroadcastManager.getInstance(this);
+        register();
+    }        
+
+    //注册广播
+    private void register() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;);
+        LocalReciver receiver = new LocalReciver();
+        broadcastManager.registerReceiver(receiver, filter);
+    }
+
+    //发送广播
+    private void sendBroadcast() {
+        Intent intent = new Intent();
+        intent.setAction(&quot;com.feealan.blogtestdemo.MY_BROADCAST&quot;);
+        broadcastManager.sendBroadcast(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //注销广播
+        broadcastManager.unregisterReceiver(receiver);
+    }
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[android 网络环境监听]]></title>
       <url>https://feealan.github.io/2016/08/22/android-network-change-listen/</url>
       <content type="html"><![CDATA[<h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><ol>
