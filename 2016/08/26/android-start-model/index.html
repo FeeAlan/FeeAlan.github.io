@@ -90,7 +90,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="launchMode," />
 
 
 
@@ -106,15 +106,22 @@
 
 
 
-<meta name="description" content="爱编程，爱生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="爱编程，爱生活">
-<meta property="og:url" content="https://feealan.github.io/tags/ui-更新/index.html">
+<meta name="description" content="activity 启动模式分为四种：standard、singleTop、singleTask、singleInstance. 
+1.standard标准启动模式，系统默认的启动方式。同一任务栈中可以存在多个activity实例。
+如果activity A 的启动模式为standard，并且activity A已启动，此时再次启动activity A，则会在任务栈中创建一个新的activity A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity 启动模式">
+<meta property="og:url" content="https://feealan.github.io/2016/08/26/android-start-model/index.html">
 <meta property="og:site_name" content="爱编程，爱生活">
-<meta property="og:description" content="爱编程，爱生活">
+<meta property="og:description" content="activity 启动模式分为四种：standard、singleTop、singleTask、singleInstance. 
+1.standard标准启动模式，系统默认的启动方式。同一任务栈中可以存在多个activity实例。
+如果activity A 的启动模式为standard，并且activity A已启动，此时再次启动activity A，则会在任务栈中创建一个新的activity A">
+<meta property="og:updated_time" content="2016-08-26T04:11:23.857Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爱编程，爱生活">
-<meta name="twitter:description" content="爱编程，爱生活">
+<meta name="twitter:title" content="Activity 启动模式">
+<meta name="twitter:description" content="activity 启动模式分为四种：standard、singleTop、singleTask、singleInstance. 
+1.standard标准启动模式，系统默认的启动方式。同一任务栈中可以存在多个activity实例。
+如果activity A 的启动模式为standard，并且activity A已启动，此时再次启动activity A，则会在任务栈中创建一个新的activity A">
 
 
 
@@ -135,9 +142,9 @@
 
 
 
-  <link rel="canonical" href="https://feealan.github.io/tags/ui-更新/"/>
+  <link rel="canonical" href="https://feealan.github.io/2016/08/26/android-start-model/"/>
 
-  <title> 标签: ui 更新 | 爱编程，爱生活 </title>
+  <title> Activity 启动模式 | 爱编程，爱生活 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -168,7 +175,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,53 +296,190 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        ui 更新
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Activity 启动模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-26T11:37:08+08:00" content="2016-08-26">
+              2016-08-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/26/android-start-model/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/26/android-start-model/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>activity 启动模式分为四种：<strong>standard</strong>、<strong>singleTop</strong>、<strong>singleTask</strong>、<strong>singleInstance</strong>. </p>
+<h2 id="1-standard"><a href="#1-standard" class="headerlink" title="1.standard"></a>1.standard</h2><p>标准启动模式，系统默认的启动方式。同一任务栈中可以存在多个activity实例。</p>
+<p>如果activity A 的启动模式为<strong>standard</strong>，并且activity A已启动，此时再次启动activity A，则会在任务栈中创建一个新的activity A 实例。任务栈中的状态 A—&gt;A 。</p>
+<h2 id="2-singleTop"><a href="#2-singleTop" class="headerlink" title="2. singleTop"></a>2. singleTop</h2><p>栈顶复用模式</p>
+<p>设置activity A的启动模式是<strong>singleTop</strong>。</p>
+<ul>
+<li>如果现在栈顶位置<strong>已有</strong>activity A实例，则在启动该实例时<strong>不会</strong>创建新的实例。</li>
+<li>如果现在栈顶位置<strong>不是</strong>activity A实例，则在启动该实例时会<strong>重新</strong>创建新的实例。</li>
+<li>如果现在任务栈中<strong>没有</strong>activity A实例，则在启动该实例时会<strong>重新</strong>创建新的实例。</li>
+</ul>
+<a id="more"></a>
+<h2 id="3-singleTask"><a href="#3-singleTask" class="headerlink" title="3. singleTask"></a>3. singleTask</h2><p>栈内复用模式</p>
+<p>设置activity A的启动模式是<strong>singleTask</strong>。</p>
+<ul>
+<li>如果任务栈中存在activity A实例，不管其处在任务栈的什么位置，都会复用该实例，并且会把在其上面的activity全部出栈。</li>
+<li>如果任务栈中不存在activity A，则会创建一个新的任务栈。</li>
+</ul>
+<h2 id="4-singleInstance"><a href="#4-singleInstance" class="headerlink" title="4. singleInstance"></a>4. singleInstance</h2><p>全局唯一模式</p>
+<p>这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/08/10/android-thread-study/" itemprop="url">
-              
-                <span itemprop="name">android 中线程的使用：更新UI</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-10T23:54:23+08:00"
-              content="2016-08-10" >
-          08-10
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/launchMode/" rel="tag">#launchMode</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/25/android-broadcast/" rel="next" title="android BroadcastReciver">
+                <i class="fa fa-chevron-left"></i> android BroadcastReciver
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/26/android-start-model/"
+           data-title="Activity 启动模式" data-url="https://feealan.github.io/2016/08/26/android-start-model/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -355,8 +499,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -440,6 +593,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-standard"><span class="nav-number">1.</span> <span class="nav-text">1.standard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-singleTop"><span class="nav-number">2.</span> <span class="nav-text">2. singleTop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-singleTask"><span class="nav-number">3.</span> <span class="nav-text">3. singleTask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-singleInstance"><span class="nav-number">4.</span> <span class="nav-text">4. singleInstance</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -536,6 +700,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

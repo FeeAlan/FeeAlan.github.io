@@ -313,6 +313,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/26/android-start-model/" itemprop="url">
+                  Activity 启动模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-26T11:37:08+08:00" content="2016-08-26">
+              2016-08-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/26/android-start-model/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/26/android-start-model/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>activity 启动模式分为四种：<strong>standard</strong>、<strong>singleTop</strong>、<strong>singleTask</strong>、<strong>singleInstance</strong>. </p>
+<h2 id="1-standard"><a href="#1-standard" class="headerlink" title="1.standard"></a>1.standard</h2><p>标准启动模式，系统默认的启动方式。同一任务栈中可以存在多个activity实例。</p>
+<p>如果activity A 的启动模式为<strong>standard</strong>，并且activity A已启动，此时再次启动activity A，则会在任务栈中创建一个新的activity A 实例。任务栈中的状态 A—&gt;A 。</p>
+<h2 id="2-singleTop"><a href="#2-singleTop" class="headerlink" title="2. singleTop"></a>2. singleTop</h2><p>栈顶复用模式</p>
+<p>设置activity A的启动模式是<strong>singleTop</strong>。</p>
+<ul>
+<li>如果现在栈顶位置<strong>已有</strong>activity A实例，则在启动该实例时<strong>不会</strong>创建新的实例。</li>
+<li>如果现在栈顶位置<strong>不是</strong>activity A实例，则在启动该实例时会<strong>重新</strong>创建新的实例。</li>
+<li>如果现在任务栈中<strong>没有</strong>activity A实例，则在启动该实例时会<strong>重新</strong>创建新的实例。</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/26/android-start-model/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/25/android-broadcast/" itemprop="url">
                   android BroadcastReciver
                 </a>
@@ -852,170 +983,11 @@ thread_a 当前d的值为：940
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/06/java-study-thread-two/" itemprop="url">
-                  Java 线程学习(二)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-06T23:57:47+08:00" content="2016-08-06">
-              2016-08-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/06/java-study-thread-two/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/java-study-thread-two/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>阻塞状态详解，即让线程离开运行状态，进入到<strong>就绪</strong>状态。</p>
-<h2 id="1-休眠"><a href="#1-休眠" class="headerlink" title="1.休眠"></a>1.休眠</h2><p>demo</p>
-<pre><code>public class ThreadTest {
-    public static void main(String[] args) {
-        new Thread(){
-            public void run() {
-                long  t= System.currentTimeMillis(); 
-                System.out.println(&quot;current time:&quot;+t);
-                try {
-                    sleep(1000);
-                    System.out.println(&quot;current time:&quot;+System.currentTimeMillis());
-
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                System.out.println(&quot;d_value:&quot; + (System.currentTimeMillis()-t));
-            };
-        }.start();
-    }
-}
-</code></pre><p>结果：</p>
-<pre><code>current time:1470501743081
-current time:1470501744081
-d_value:1000
-</code></pre><p>当前线程休眠1000 ms后继续执行。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/06/java-study-thread-two/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1056,7 +1028,7 @@ d_value:1000
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1073,7 +1045,7 @@ d_value:1000
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[Activity 启动模式]]></title>
+      <url>https://feealan.github.io/2016/08/26/android-start-model/</url>
+      <content type="html"><![CDATA[<p>activity 启动模式分为四种：<strong>standard</strong>、<strong>singleTop</strong>、<strong>singleTask</strong>、<strong>singleInstance</strong>. </p>
+<h2 id="1-standard"><a href="#1-standard" class="headerlink" title="1.standard"></a>1.standard</h2><p>标准启动模式，系统默认的启动方式。同一任务栈中可以存在多个activity实例。</p>
+<p>如果activity A 的启动模式为<strong>standard</strong>，并且activity A已启动，此时再次启动activity A，则会在任务栈中创建一个新的activity A 实例。任务栈中的状态 A—&gt;A 。</p>
+<h2 id="2-singleTop"><a href="#2-singleTop" class="headerlink" title="2. singleTop"></a>2. singleTop</h2><p>栈顶复用模式</p>
+<p>设置activity A的启动模式是<strong>singleTop</strong>。</p>
+<ul>
+<li>如果现在栈顶位置<strong>已有</strong>activity A实例，则在启动该实例时<strong>不会</strong>创建新的实例。</li>
+<li>如果现在栈顶位置<strong>不是</strong>activity A实例，则在启动该实例时会<strong>重新</strong>创建新的实例。</li>
+<li>如果现在任务栈中<strong>没有</strong>activity A实例，则在启动该实例时会<strong>重新</strong>创建新的实例。</li>
+</ul>
+<a id="more"></a>
+<h2 id="3-singleTask"><a href="#3-singleTask" class="headerlink" title="3. singleTask"></a>3. singleTask</h2><p>栈内复用模式</p>
+<p>设置activity A的启动模式是<strong>singleTask</strong>。</p>
+<ul>
+<li>如果任务栈中存在activity A实例，不管其处在任务栈的什么位置，都会复用该实例，并且会把在其上面的activity全部出栈。</li>
+<li>如果任务栈中不存在activity A，则会创建一个新的任务栈。</li>
+</ul>
+<h2 id="4-singleInstance"><a href="#4-singleInstance" class="headerlink" title="4. singleInstance"></a>4. singleInstance</h2><p>全局唯一模式</p>
+<p>这种模式下的Activity会单独占用一个Task栈，具有全局唯一性，即整个系统中就这么一个实例，由于栈内复用的特性，后续的请求均不会创建新的Activity实例，除非这个特殊的任务栈被销毁了。以singleInstance模式启动的Activity在整个系统中是单例的，如果在启动这样的Activiyt时，已经存在了一个实例，那么会把它所在的任务调度到前台，重用这个实例。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[android BroadcastReciver]]></title>
       <url>https://feealan.github.io/2016/08/25/android-broadcast/</url>
       <content type="html"><![CDATA[<p><strong>android 系统的广播机制</strong></p>
