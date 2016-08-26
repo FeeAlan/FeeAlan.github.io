@@ -313,6 +313,178 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/07/java-study-thread-three/" itemprop="url">
+                  Java 线程学习(三)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-07T01:26:14+08:00" content="2016-08-07">
+              2016-08-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/07/java-study-thread-three/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/07/java-study-thread-three/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="线程的同步与锁"><a href="#线程的同步与锁" class="headerlink" title="线程的同步与锁"></a>线程的同步与锁</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h2><p>线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。<br>例如： </p>
+<p>数据bean    </p>
+<pre><code>public class DataBean {
+    private int d = 1000;
+    public int getD() {
+        return d;
+    }
+    public void setD(int x) {
+        this.d -= x ;
+    }
+}
+</code></pre><p>Runnable 接口</p>
+<pre><code>public class AsyncRunnable implements Runnable{
+    private DataBean dataBean = new DataBean();
+    public void run() {
+        for (int i = 0; i &lt; 3; i++) {
+            this.dataBean.setD(i*10);
+            System.out.println(Thread.currentThread().getName()+&quot; 当前d的值为：&quot;+ this.dataBean.getD());
+        }
+    }
+    public static void main(String[] args) {
+        AsyncRunnable runnable = new AsyncRunnable();
+        Thread thread_a = new Thread(runnable,&quot;thread_a&quot;);
+        Thread thread_b = new Thread(runnable,&quot;thread_b&quot;);
+
+        thread_a.start();
+        thread_b.start();
+
+    }
+}
+</code></pre><p>结果：</p>
+<pre><code>thread_a 当前d的值为：1000
+thread_b 当前d的值为：1000
+thread_b 当前d的值为：980
+thread_b 当前d的值为：960
+thread_a 当前d的值为：990
+thread_a 当前d的值为：940
+</code></pre><p>分析：</p>
+<p>很明显结果不对，而且每一次运行结果都不同。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/07/java-study-thread-three/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/06/java-study-thread-two/" itemprop="url">
                   Java 线程学习(二)
                 </a>
@@ -871,132 +1043,6 @@ d_value:1000
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/31/hexo-new-post-auto-open-markdown/" itemprop="url">
-                  hexo发布新文章是自动打开编辑器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-31T00:41:43+08:00" content="2016-07-31">
-              2016-07-31
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/31/hexo-new-post-auto-open-markdown/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/hexo-new-post-auto-open-markdown/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在使用hexo时，发现每次new post一篇文章，都要先输入命令<code>hexo new &quot;new post name&quot;</code>,然后再去文件夹里找刚才new的那篇文章，之后再用markdown打开，有点麻烦，万一文章多了的话一下还难得找到。</p>
-<p>在网上找了一下解决了这个问题。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ol>
-<li>该办法适用于hexo 3.0版本的</li>
-<li>因为我用的是Windows系统，所以该办法适用于Windows，其他系统方法未知
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/31/hexo-new-post-auto-open-markdown/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1042,7 +1088,7 @@ d_value:1000
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1050,7 +1096,7 @@ d_value:1000
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1059,7 +1105,7 @@ d_value:1000
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
