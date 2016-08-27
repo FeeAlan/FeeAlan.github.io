@@ -812,7 +812,7 @@ hexo.on(&apos;new&apos;, function(data){
 </ol>
 <a id="more"></a>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="富文本-webview"><a href="#富文本-webview" class="headerlink" title="富文本+webview"></a>富文本+webview</h3><ol>
-<li>自定义一个富文本编辑控件，用户能够插入文字，图片；删除文字、图片。在<a href="https://github.com/" title="github" target="_blank" rel="external">https://github.com/</a>找了蛮久都没找到合适的，选择直接使用系统的<strong>EditText</strong>控件。</li>
+<li>自定义一个富文本编辑控件，用户能够插入文字，图片；删除文字、图片。在<a href="https://github.com/" title="github" target="_blank" rel="external">Github</a>找了蛮久都没找到合适的，选择直接使用系统的<strong>EditText</strong>控件。</li>
 <li>使用<strong>ImageSpan</strong>往<strong>EditTEXT</strong>插入一段 <strong>&lt; img src=””/&gt;</strong>片段：</li>
 </ol>
 <pre><code>    Bitmap bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());

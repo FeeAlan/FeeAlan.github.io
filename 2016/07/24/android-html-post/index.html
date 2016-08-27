@@ -128,7 +128,7 @@
 如何让用户插入文字和图片？
 如何把这些数据参数提交到后台？
 如何在客户端显示这些数据？">
-<meta property="og:updated_time" content="2016-07-30T16:13:41.566Z">
+<meta property="og:updated_time" content="2016-08-27T14:32:01.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android 表单提交">
 <meta name="twitter:description" content="之前那个项目遇到一个需求，大概是这个样子：
@@ -265,12 +265,32 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-biography">
+          <a href="/bio" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            关于
+            个人简历
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-website">
+          <a href="/website" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            常用资源
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
           </a>
         </li>
       
@@ -413,7 +433,7 @@
 </ol>
 <a id="more"></a>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="富文本-webview"><a href="#富文本-webview" class="headerlink" title="富文本+webview"></a>富文本+webview</h3><ol>
-<li>自定义一个富文本编辑控件，用户能够插入文字，图片；删除文字、图片。在<a href="https://github.com/" title="github" target="_blank" rel="external">https://github.com/</a>找了蛮久都没找到合适的，选择直接使用系统的<strong>EditText</strong>控件。</li>
+<li>自定义一个富文本编辑控件，用户能够插入文字，图片；删除文字、图片。在<a href="https://github.com/" title="github" target="_blank" rel="external">Github</a>找了蛮久都没找到合适的，选择直接使用系统的<strong>EditText</strong>控件。</li>
 <li>使用<strong>ImageSpan</strong>往<strong>EditTEXT</strong>插入一段 <strong>&lt; img src=””/&gt;</strong>片段：</li>
 </ol>
 <pre><code>    Bitmap bitmap = BitmapFactory.decodeFile(scaledFile.getAbsolutePath());
