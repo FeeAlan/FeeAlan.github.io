@@ -337,6 +337,140 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/10/android-thread-study/" itemprop="url">
+                  android 中线程的使用：更新UI
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-10T23:54:23+08:00" content="2016-08-10">
+              2016-08-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/10/android-thread-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/10/android-thread-study/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在android 4.0设置了一个规则：</p>
+<blockquote>
+<p>更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞</p>
+</blockquote>
+<p>如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为</p>
+<pre><code>I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main thread.
+</code></pre><p>如果在子线程更新UI则会报错：</p>
+<pre><code>FATAL EXCEPTION: Thread-109 
+Process: com.feealan.blogtestdemo, PID: 8333  
+android.view.ViewRootImp$CalledFromWrongThreadException:
+ Only the original thread that created a view hierarchy can touch its views.
+</code></pre><h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><p>通常在进行网络操作时，因为网络速率等一些原因，这一步操作的时间是未知的，因此一般把网络请求放到子线程中去做。那么这里就存在一个问题：<strong>请求到的数据如何显示到UI控件上？</strong></p>
+<h2 id="二、寻求解决办法"><a href="#二、寻求解决办法" class="headerlink" title="二、寻求解决办法"></a>二、寻求解决办法</h2><p>android 系统根据这种情况专门设置的Handler机制，面对这种情况就轻而易举了。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/10/android-thread-study/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/07/java-study-thread-three/" itemprop="url">
                   Java 线程学习(三)
                 </a>
@@ -925,148 +1059,6 @@ d_value:1000
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/02/client-and-server-time-calibration/" itemprop="url">
-                  客户端与服务端同步时间
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-02T00:12:09+08:00" content="2016-08-02">
-              2016-08-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/02/client-and-server-time-calibration/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/02/client-and-server-time-calibration/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p><strong>设计一个电影开始放映的倒计时的功能</strong>。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。</p>
-<ol>
-<li>不同用户的系统时间可能不同</li>
-<li>不同用户设置的时区不同</li>
-</ol>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
-<li><strong>server</strong>当前的<code>Syetem.currentTimeMills()</code>发送给客户端，注意这个时间是<a href="http://baike.baidu.com/link?url=DVReuC7Bq-ymYSvaYw3PGyEnl8Z6M8LZbJHlqtJSuxunMSrfB6JNq_sDlPOjQIpo9sSkdpLLTj--AG8CQcdx_lS4WwPdYJr7z3y9ti0OtcU9zhdHkRmv7AJzC6bTih7r"><strong>UTC</strong></a>时间。还有后台如果要给客户端发送时间数据，不要用<strong>Date</strong>，而是发送一个<strong>long</strong>类型的整数。</li>
-<li><strong>client</strong>设置时区为<strong>GMT+8</strong>, <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));</code>,这里先考虑在东八区的情况，其他时区暂不考虑</li>
-<li><p>编写方法同步client和server的时间</p>
-<pre><code>private void asyncBetweenServerAndClientTime(long serverTime) {
-    TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));
-    //时间差
-    Long d_value = serverTime+8*60*60*1000
-            -System.currentTimeMillis();
-    // 保存 d_value
-    ....
-}
-</code></pre></li>
-</ol>
-<ol>
-<li>在倒计时的时间加上保存的<strong>d_value</strong>，这样就能保证在每个客户端看到的倒计时相同了
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/02/client-and-server-time-calibration/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1112,7 +1104,7 @@ d_value:1000
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1129,7 +1121,7 @@ d_value:1000
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

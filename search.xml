@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title><![CDATA[adb command]]></title>
+      <url>https://feealan.github.io/2016/09/10/command/</url>
+      <content type="html"><![CDATA[<h1 id="安装app"><a href="#安装app" class="headerlink" title="安装app"></a>安装app</h1><p>先定位到apk的文件夹再执行下面的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb install [appname.apk]</div></pre></td></tr></table></figure></p>
+<p>appname.apk 为安装文件的文件名</p>
+<hr>
+<h1 id="复制文件到手机"><a href="#复制文件到手机" class="headerlink" title="复制文件到手机"></a>复制文件到手机</h1><p>先定位到要发送的文件的目录，再执行下面的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb push [filename] [mnt/sdcard/floder]</div></pre></td></tr></table></figure></p>
+<p>filename 为文件名<br>mnt/sdcard/floder为接受文件的目的文件夹</p>
+<hr>
+<a id="more"></a>
+<h1 id="查看apk文件的清单文件"><a href="#查看apk文件的清单文件" class="headerlink" title="查看apk文件的清单文件"></a>查看apk文件的清单文件</h1><p>先定位到apk文件目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ aapt dump xmltree [xxx.apk] AndroidManifest.xml</div></pre></td></tr></table></figure></p>
+<p>xxx.apk为apk文件名</p>
+<hr>
+<h1 id="adb启动应用统计启动时间"><a href="#adb启动应用统计启动时间" class="headerlink" title="adb启动应用统计启动时间"></a>adb启动应用统计启动时间</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb shell am start -W -n com.xx.xx/.StartActivity</div></pre></td></tr></table></figure>
+<p><code>com.xx.xx</code> 是包名      <code>.StartActivity</code> 为启动activity的相对路径</p>
+<p><img src="http://ocnyep8a7.bkt.clouddn.com/16-9-10/32936060.jpg" alt="image"></p>
+<ul>
+<li><p>ThisTime : 表示连续启动的 Activity 中最后一个的启动耗时。</p>
+</li>
+<li><p>TotalTime : 表示启动耗时，包含了启动新的进程与和 Activity 的耗时。换句话说，就是你的应用自身启动的时间，从进程创建(如果需要)到窗口绘制完成。</p>
+</li>
+<li><p>WaitTime : 相对于 TotalTime，它额外包含了前一个应用的 Activity 的 Pause 耗时。</p>
+</li>
+</ul>
+<p>所以通常来说我们只关注 TotalTime 即可。</p>
+<hr>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[统一建模语言 UML 学习]]></title>
       <url>https://feealan.github.io/2016/08/26/UML-study/</url>
       <content type="html"><![CDATA[<h3 id="UML教程"><a href="#UML教程" class="headerlink" title="UML教程"></a>UML教程</h3><ul>
