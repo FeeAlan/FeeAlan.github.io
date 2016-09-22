@@ -6,8 +6,9 @@
     <entry>
       <title><![CDATA[adb command]]></title>
       <url>https://feealan.github.io/2016/09/10/command/</url>
-      <content type="html"><![CDATA[<h1 id="安装app"><a href="#安装app" class="headerlink" title="安装app"></a>安装app</h1><p>先定位到apk的文件夹再执行下面的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb install [appname.apk]</div></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<h1 id="安装app"><a href="#安装app" class="headerlink" title="安装app"></a>安装app</h1><p>先定位到apk的文件夹再执行下面的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ adb install [appname.apk]</div><div class="line"> </div><div class="line">$ adb install -r [appname.apk]</div></pre></td></tr></table></figure></p>
 <p>appname.apk 为安装文件的文件名</p>
+<p>-r 意思为覆盖安装</p>
 <hr>
 <h1 id="复制文件到手机"><a href="#复制文件到手机" class="headerlink" title="复制文件到手机"></a>复制文件到手机</h1><p>先定位到要发送的文件的目录，再执行下面的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ adb push [filename] [mnt/sdcard/floder]</div></pre></td></tr></table></figure></p>
 <p>filename 为文件名<br>mnt/sdcard/floder为接受文件的目的文件夹</p>
