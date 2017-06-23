@@ -109,7 +109,7 @@
 <meta name="description" content="爱编程，爱生活">
 <meta property="og:type" content="website">
 <meta property="og:title" content="知行合一&顺其自然">
-<meta property="og:url" content="http://feisongbai.com/blog/tags/handler/index.html">
+<meta property="og:url" content="http://feisongbai.com/blog/page/6/index.html">
 <meta property="og:site_name" content="知行合一&顺其自然">
 <meta property="og:description" content="爱编程，爱生活">
 <meta name="twitter:card" content="summary">
@@ -135,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="http://feisongbai.com/blog/tags/handler/"/>
+  <link rel="canonical" href="http://feisongbai.com/blog/page/6/"/>
 
-  <title> 标签: handler | 知行合一&顺其自然 </title>
+  <title> 知行合一&顺其自然 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -168,7 +168,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <!-- add fork me on github -->
@@ -302,47 +304,283 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        handler
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <section id="posts" class="posts-expand">
     
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
 
-      <h1 class="post-title">
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/blog/2016/08/10/android-thread-study/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
               
-                <span itemprop="name">android 中线程的使用：更新UI</span>
+                
+                <a class="post-title-link" href="/blog/2016/08/02/client-and-server-time-calibration/" itemprop="url">
+                  客户端与服务端同步时间
+                </a>
               
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-02T00:12:09+08:00" content="2016-08-02">
+              2016-08-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/08/02/client-and-server-time-calibration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/02/client-and-server-time-calibration/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p><strong>设计一个电影开始放映的倒计时的功能</strong>。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。</p>
+<ol>
+<li>不同用户的系统时间可能不同</li>
+<li>不同用户设置的时区不同</li>
+</ol>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li><strong>server</strong>当前的<code>Syetem.currentTimeMills()</code>发送给客户端，注意这个时间是<a href="http://baike.baidu.com/link?url=DVReuC7Bq-ymYSvaYw3PGyEnl8Z6M8LZbJHlqtJSuxunMSrfB6JNq_sDlPOjQIpo9sSkdpLLTj--AG8CQcdx_lS4WwPdYJr7z3y9ti0OtcU9zhdHkRmv7AJzC6bTih7r"><strong>UTC</strong></a>时间。还有后台如果要给客户端发送时间数据，不要用<strong>Date</strong>，而是发送一个<strong>long</strong>类型的整数。</li>
+<li><strong>client</strong>设置时区为<strong>GMT+8</strong>, <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));</code>,这里先考虑在东八区的情况，其他时区暂不考虑</li>
+<li><p>编写方法同步client和server的时间</p>
+<pre><code>private void asyncBetweenServerAndClientTime(long serverTime) {
+    TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));
+    //时间差
+    Long d_value = serverTime+8*60*60*1000
+            -System.currentTimeMillis();
+    // 保存 d_value
+    ....
+}
+</code></pre></li>
+</ol>
+<ol>
+<li>在倒计时的时间加上保存的<strong>d_value</strong>，这样就能保证在每个客户端看到的倒计时相同了
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/08/02/client-and-server-time-calibration/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-10T23:54:23+08:00"
-              content="2016-08-10" >
-          08-10
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
     
-  </div>
+      
 
   
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/07/31/hexo-new-post-auto-open-markdown/" itemprop="url">
+                  hexo发布新文章是自动打开编辑器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-31T00:41:43+08:00" content="2016-07-31">
+              2016-07-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/07/31/hexo-new-post-auto-open-markdown/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/31/hexo-new-post-auto-open-markdown/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在使用hexo时，发现每次new post一篇文章，都要先输入命令<code>hexo new &quot;new post name&quot;</code>,然后再去文件夹里找刚才new的那篇文章，之后再用markdown打开，有点麻烦，万一文章多了的话一下还难得找到。</p>
+<p>在网上找了一下解决了这个问题。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ol>
+<li>该办法适用于hexo 3.0版本的</li>
+<li>因为我用的是Windows系统，所以该办法适用于Windows，其他系统方法未知
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/07/31/hexo-new-post-auto-open-markdown/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/blog/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/blog/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/7/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>

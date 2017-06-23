@@ -109,7 +109,7 @@
 <meta name="description" content="爱编程，爱生活">
 <meta property="og:type" content="website">
 <meta property="og:title" content="知行合一&顺其自然">
-<meta property="og:url" content="http://feisongbai.com/blog/tags/handler/index.html">
+<meta property="og:url" content="http://feisongbai.com/blog/page/5/index.html">
 <meta property="og:site_name" content="知行合一&顺其自然">
 <meta property="og:description" content="爱编程，爱生活">
 <meta name="twitter:card" content="summary">
@@ -135,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="http://feisongbai.com/blog/tags/handler/"/>
+  <link rel="canonical" href="http://feisongbai.com/blog/page/5/"/>
 
-  <title> 标签: handler | 知行合一&顺其自然 </title>
+  <title> 知行合一&顺其自然 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -168,7 +168,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <!-- add fork me on github -->
@@ -302,47 +304,293 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        handler
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <section id="posts" class="posts-expand">
     
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
 
-      <h1 class="post-title">
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/blog/2016/08/10/android-thread-study/" itemprop="url">
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
               
-                <span itemprop="name">android 中线程的使用：更新UI</span>
+                
+                <a class="post-title-link" href="/blog/2016/08/06/java-thread-study/" itemprop="url">
+                  Java 线程学习(一)
+                </a>
               
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T22:36:35+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/android/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/08/06/java-thread-study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/java-thread-study/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>一直一来对于java多线程的知识不是理解特别透彻，在此对线程知识进行一次整理，加深对多线程的理解，方便到实际应用中。</p>
+<h2 id="一、-进程与线程"><a href="#一、-进程与线程" class="headerlink" title="一、 进程与线程"></a>一、 进程与线程</h2><h3 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h3><p>操作系统中有多个程序，这里每个程序就是一个进程。进程指的是一个内存中运行的程序，每个进程都有自己独立的内存空间，一个进程可以启动多个线程。</p>
+<h3 id="2-线程"><a href="#2-线程" class="headerlink" title="2. 线程"></a>2. 线程</h3><p>指的是进程中的一个执行单元，一个进程可以有多个线程。多个线程可以共享一个进程中的内存。</p>
+<h3 id="3-举例-线程与进程的关系"><a href="#3-举例-线程与进程的关系" class="headerlink" title="3. 举例 线程与进程的关系"></a>3. 举例 线程与进程的关系</h3><p>把一个学校比作一个操作系统，班级比作是<strong>进程</strong>，班干部就是<strong>线程</strong>。一个学校里面可以有很多班级，相当于操作系统中有许多程序。各个班级都有自己的教室，即各个应用程序之间都存在一个独立的 <strong>内存空间</strong>中。班级中班干部做不同的任务，即某一进程中，可以有许多线程，执行不同的任务。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/08/06/java-thread-study/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-10T23:54:23+08:00"
-              content="2016-08-10" >
-          08-10
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
     
-  </div>
+      
 
   
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/08/03/baidumap-apply-for-appkey/" itemprop="url">
+                  android studio 申请百度地图获取appkey
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T11:09:20+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/08/03/baidumap-apply-for-appkey/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/baidumap-apply-for-appkey/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="获取发布版SHA1-key"><a href="#获取发布版SHA1-key" class="headerlink" title="获取发布版SHA1 key"></a>获取发布版SHA1 key</h2><ol>
+<li><p>先生成一个签名文件</p>
+<blockquote>
+<p>Build—Generate Signed APK</p>
+</blockquote>
+<p> 之后填写相关签名文件名称和密码，签名文件存放的位置，最好是放在项目的根目录</p>
+</li>
+<li><p>输入以下命令获取签名的SHA1值</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -v -list -keystore [签名文件的绝对路径]</div></pre></td></tr></table></figure>
+<p> 例如： </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -v -list -keystore I:\demo\MyBaiduMapDemo\baidumap.jks</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="获取开发版SHA1-KEY"><a href="#获取开发版SHA1-KEY" class="headerlink" title="获取开发版SHA1 KEY"></a>获取开发版SHA1 KEY</h2><ol>
+<li><p>输入以下命令</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -v -list -keystore C:\Users\Administrator\.android\debug.keystore</div></pre></td></tr></table></figure>
+<blockquote>
+<p>C:\Users\Administrator.android\debug.keystore  是debug签名文件的绝对路径，默认是在该位置</p>
+</blockquote>
+<p> 要输入密码时 密码为  <strong>android</strong></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/08/03/baidumap-apply-for-appkey/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/blog/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/blog/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/6/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>

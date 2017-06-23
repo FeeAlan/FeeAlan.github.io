@@ -87,7 +87,7 @@
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -99,7 +99,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
 
 
 
@@ -108,12 +108,12 @@
 
 <meta name="description" content="爱编程，爱生活">
 <meta property="og:type" content="website">
-<meta property="og:title" content="爱编程，爱生活">
-<meta property="og:url" content="https://feealan.github.io/page/4/index.html">
-<meta property="og:site_name" content="爱编程，爱生活">
+<meta property="og:title" content="知行合一&顺其自然">
+<meta property="og:url" content="http://feisongbai.com/blog/page/4/index.html">
+<meta property="og:site_name" content="知行合一&顺其自然">
 <meta property="og:description" content="爱编程，爱生活">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爱编程，爱生活">
+<meta name="twitter:title" content="知行合一&顺其自然">
 <meta name="twitter:description" content="爱编程，爱生活">
 
 
@@ -135,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="https://feealan.github.io/page/4/"/>
+  <link rel="canonical" href="http://feisongbai.com/blog/page/4/"/>
 
-  <title> 爱编程，爱生活 </title>
+  <title> 知行合一&顺其自然 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -182,9 +182,9 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/blog/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">爱编程，爱生活</span>
+      <span class="site-title">知行合一&顺其自然</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -207,7 +207,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/blog/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -217,7 +217,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/blog/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -227,7 +227,7 @@
       
         
         <li class="menu-item menu-item-website">
-          <a href="/website" rel="section">
+          <a href="/blog/website" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-globe"></i> <br />
             
@@ -237,7 +237,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/blog/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -247,7 +247,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/blog/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -257,7 +257,7 @@
       
         
         <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
+          <a href="/blog/404.html" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
             
@@ -327,8 +327,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/18/network-gson-parse/" itemprop="url">
-                  网络请求json解析时遇到的坑
+                <a class="post-title-link" href="/blog/2016/08/07/java-study-thread-three/" itemprop="url">
+                  Java 线程学习(三)
                 </a>
               
             
@@ -341,235 +341,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-18T22:10:27+08:00" content="2016-07-18">
-              2016-07-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/18/network-gson-parse/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/18/network-gson-parse/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1、网络请求数据返回的几种情况"><a href="#1、网络请求数据返回的几种情况" class="headerlink" title="1、网络请求数据返回的几种情况"></a>1、网络请求数据返回的几种情况</h1><ol>
-<li>http返回状态码为404或者500错误，即请求未成功</li>
-<li>http返回状态码为200，请求成功</li>
-</ol>
-<h1 id="2、网络请求数据成功返回的json数据格式"><a href="#2、网络请求数据成功返回的json数据格式" class="headerlink" title="2、网络请求数据成功返回的json数据格式"></a>2、网络请求数据成功返回的json数据格式</h1><pre><code>{
-    &quot;data&quot;: &quot;&quot;,
-    &quot;msg&quot;: &quot;success&quot;,
-    &quot;status&quot;: 0  //这里 0代表成功  1代表失败
-}     
-</code></pre><p> 一般数据最外层都相同</p>
-<blockquote>
-<p><strong>status</strong> 即客户端和服务端商量好的状态码</p>
-<p><strong>msg</strong>  即对status的一个解释</p>
-<p><strong>data</strong> 存放数据</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/18/network-gson-parse/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/17/Serialize-and-Deserialize/" itemprop="url">
-                  Android 序列化与反序列化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-17T22:48:08+08:00" content="2016-07-17">
-              2016-07-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/17/Serialize-and-Deserialize/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/17/Serialize-and-Deserialize/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="1、什么是序列化与反序列化"><a href="#1、什么是序列化与反序列化" class="headerlink" title="1、什么是序列化与反序列化"></a>1、什么是序列化与反序列化</h2><blockquote>
-<p>序列化：将数据结构或对象转换成二进制串的过程</p>
-<p>反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程</p>
-</blockquote>
-<h2 id="2、为什么要序列化与反序列化"><a href="#2、为什么要序列化与反序列化" class="headerlink" title="2、为什么要序列化与反序列化"></a>2、为什么要序列化与反序列化</h2><blockquote>
-<p>由于在系统底层，数据的传输形式是简单的字节序列形式传递，即在底层，系统不认识对象，只认识字节序列，而为了达到进程通讯的目的，需要先将数据序列化，而序列化就是将对象转化字节序列的过程。</p>
-<p>相反地，当字节序列被运到相应的进程的时候，进程为了识别这些数据，就要将其反序列化，即把字节序列转化为对象。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/17/Serialize-and-Deserialize/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/14/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-14T23:30:03+08:00" content="2016-07-14">
-              2016-07-14
+            <time itemprop="dateCreated" datetime="2016-08-07T01:26:14+08:00" content="2016-08-07">
+              2016-08-07
             </time>
           </span>
 
@@ -582,8 +355,20 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
                     <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/android/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -598,8 +383,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/14/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/14/hello-world/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/08/07/java-study-thread-three/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/07/java-study-thread-three/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -623,18 +408,209 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+          <h1 id="线程的同步与锁"><a href="#线程的同步与锁" class="headerlink" title="线程的同步与锁"></a>线程的同步与锁</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h2><p>线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。<br>例如： </p>
+<p>数据bean    </p>
+<pre><code>public class DataBean {
+    private int d = 1000;
+    public int getD() {
+        return d;
+    }
+    public void setD(int x) {
+        this.d -= x ;
+    }
+}
+</code></pre><p>Runnable 接口</p>
+<pre><code>public class AsyncRunnable implements Runnable{
+    private DataBean dataBean = new DataBean();
+    public void run() {
+        for (int i = 0; i &lt; 3; i++) {
+            this.dataBean.setD(i*10);
+            System.out.println(Thread.currentThread().getName()+&quot; 当前d的值为：&quot;+ this.dataBean.getD());
+        }
+    }
+    public static void main(String[] args) {
+        AsyncRunnable runnable = new AsyncRunnable();
+        Thread thread_a = new Thread(runnable,&quot;thread_a&quot;);
+        Thread thread_b = new Thread(runnable,&quot;thread_b&quot;);
+
+        thread_a.start();
+        thread_b.start();
+
+    }
+}
+</code></pre><p>结果：</p>
+<pre><code>thread_a 当前d的值为：1000
+thread_b 当前d的值为：1000
+thread_b 当前d的值为：980
+thread_b 当前d的值为：960
+thread_a 当前d的值为：990
+thread_a 当前d的值为：940
+</code></pre><p>分析：</p>
+<p>很明显结果不对，而且每一次运行结果都不同。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/08/07/java-study-thread-three/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/08/06/java-study-thread-two/" itemprop="url">
+                  Java 线程学习(二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-06T23:57:47+08:00" content="2016-08-06">
+              2016-08-06
+            </time>
+          </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/android/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/08/06/java-study-thread-two/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/java-study-thread-two/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>阻塞状态详解，即让线程离开运行状态，进入到<strong>就绪</strong>状态。</p>
+<h2 id="1-休眠"><a href="#1-休眠" class="headerlink" title="1.休眠"></a>1.休眠</h2><p>demo</p>
+<pre><code>public class ThreadTest {
+    public static void main(String[] args) {
+        new Thread(){
+            public void run() {
+                long  t= System.currentTimeMillis(); 
+                System.out.println(&quot;current time:&quot;+t);
+                try {
+                    sleep(1000);
+                    System.out.println(&quot;current time:&quot;+System.currentTimeMillis());
+
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println(&quot;d_value:&quot; + (System.currentTimeMillis()-t));
+            };
+        }.start();
+    }
+}
+</code></pre><p>结果：</p>
+<pre><code>current time:1470501743081
+current time:1470501744081
+d_value:1000
+</code></pre><p>当前线程休眠1000 ms后继续执行。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/08/06/java-study-thread-two/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -665,7 +641,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/blog/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/blog/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/blog/page/9/">9</a><a class="extend next" rel="next" href="/blog/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -698,14 +674,14 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/blog/images/avatar.gif"
                alt="alan_fee" />
           <p class="site-author-name" itemprop="name">alan_fee</p>
           <p class="site-description motion-element" itemprop="description">爱编程，爱生活</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives">
+            <a href="/blog/archives">
               <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
@@ -713,7 +689,7 @@
 
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/blog/categories">
                 <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
@@ -722,7 +698,7 @@
 
           
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/blog/tags">
                 <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
@@ -865,21 +841,21 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
 
 
 
   
-  
-
   
 
   
 
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
 
 
 
@@ -905,7 +881,7 @@
   
     
     <script src="//cdn.jsdelivr.net/ua-parser.js/0.7.10/ua-parser.min.js"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+    <script src="/blog/js/src/hook-duoshuo.js"></script>
   
 
 
@@ -923,7 +899,7 @@
     if (search_path.length == 0) {
        search_path = "search.xml";
     }
-    var path = "/" + search_path;
+    var path = "/blog/" + search_path;
     // monitor main search box;
 
     function proceedsearch() {
