@@ -106,34 +106,17 @@
 
 
 
-<meta name="description" content="1、什么是序列化与反序列化
-序列化：将数据结构或对象转换成二进制串的过程
-反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程
-
-2、为什么要序列化与反序列化
-由于在系统底层，数据的传输形式是简单的字节序列形式传递，即在底层，系统不认识对象，只认识字节序列，而为了达到进程通讯的目的，需要先将数据序列化，而序列化就是将对象转化字节序列的过程。
-相反地，当字节序列被运到相应的进程的时">
+<meta name="description" content="1、什么是序列化与反序列化 序列化：将数据结构或对象转换成二进制串的过程 反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程  2、为什么要序列化与反序列化 由于在系统底层，数据的传输形式是简单的字节序列形式传递，即在底层，系统不认识对象，只认识字节序列，而为了达到进程通讯的目的，需要先将数据序列化，而序列化就是将对象转化字节序列的过程。 相反地，当字节序列被运到相应的进程的时">
+<meta name="keywords" content="Android,serialize,Parcelable">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 序列化与反序列化">
 <meta property="og:url" content="http://feisongbai.com/blog/2016/07/17/Serialize-and-Deserialize/index.html">
-<meta property="og:site_name" content="知行合一&顺其自然">
-<meta property="og:description" content="1、什么是序列化与反序列化
-序列化：将数据结构或对象转换成二进制串的过程
-反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程
-
-2、为什么要序列化与反序列化
-由于在系统底层，数据的传输形式是简单的字节序列形式传递，即在底层，系统不认识对象，只认识字节序列，而为了达到进程通讯的目的，需要先将数据序列化，而序列化就是将对象转化字节序列的过程。
-相反地，当字节序列被运到相应的进程的时">
+<meta property="og:site_name" content="知行合一">
+<meta property="og:description" content="1、什么是序列化与反序列化 序列化：将数据结构或对象转换成二进制串的过程 反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程  2、为什么要序列化与反序列化 由于在系统底层，数据的传输形式是简单的字节序列形式传递，即在底层，系统不认识对象，只认识字节序列，而为了达到进程通讯的目的，需要先将数据序列化，而序列化就是将对象转化字节序列的过程。 相反地，当字节序列被运到相应的进程的时">
 <meta property="og:updated_time" content="2016-07-18T14:08:03.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 序列化与反序列化">
-<meta name="twitter:description" content="1、什么是序列化与反序列化
-序列化：将数据结构或对象转换成二进制串的过程
-反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程
-
-2、为什么要序列化与反序列化
-由于在系统底层，数据的传输形式是简单的字节序列形式传递，即在底层，系统不认识对象，只认识字节序列，而为了达到进程通讯的目的，需要先将数据序列化，而序列化就是将对象转化字节序列的过程。
-相反地，当字节序列被运到相应的进程的时">
+<meta name="twitter:description" content="1、什么是序列化与反序列化 序列化：将数据结构或对象转换成二进制串的过程 反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程  2、为什么要序列化与反序列化 由于在系统底层，数据的传输形式是简单的字节序列形式传递，即在底层，系统不认识对象，只认识字节序列，而为了达到进程通讯的目的，需要先将数据序列化，而序列化就是将对象转化字节序列的过程。 相反地，当字节序列被运到相应的进程的时">
 
 
 
@@ -156,7 +139,7 @@
 
   <link rel="canonical" href="http://feisongbai.com/blog/2016/07/17/Serialize-and-Deserialize/"/>
 
-  <title> Android 序列化与反序列化 | 知行合一&顺其自然 </title>
+  <title> Android 序列化与反序列化 | 知行合一 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -201,7 +184,7 @@
   <div class="custom-logo-site-title">
     <a href="/blog/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">知行合一&顺其自然</span>
+      <span class="site-title">知行合一</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -581,7 +564,7 @@ private String serialize(Person person) throws IOException {
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/07/17/Serialize-and-Deserialize/"
-           data-title="Android 序列化与反序列化" data-url="http://feisongbai.com/blog/blog/2016/07/17/Serialize-and-Deserialize/">
+           data-title="Android 序列化与反序列化" data-url="http://feisongbai.com/blog/2016/07/17/Serialize-and-Deserialize/">
       </div>
     
   </div>

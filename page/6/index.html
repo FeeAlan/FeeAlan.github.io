@@ -108,12 +108,12 @@
 
 <meta name="description" content="爱编程，爱生活">
 <meta property="og:type" content="website">
-<meta property="og:title" content="知行合一&顺其自然">
+<meta property="og:title" content="知行合一">
 <meta property="og:url" content="http://feisongbai.com/blog/page/6/index.html">
-<meta property="og:site_name" content="知行合一&顺其自然">
+<meta property="og:site_name" content="知行合一">
 <meta property="og:description" content="爱编程，爱生活">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="知行合一&顺其自然">
+<meta name="twitter:title" content="知行合一">
 <meta name="twitter:description" content="爱编程，爱生活">
 
 
@@ -137,7 +137,7 @@
 
   <link rel="canonical" href="http://feisongbai.com/blog/page/6/"/>
 
-  <title> 知行合一&顺其自然 </title>
+  <title> 知行合一 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -184,7 +184,7 @@
   <div class="custom-logo-site-title">
     <a href="/blog/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">知行合一&顺其自然</span>
+      <span class="site-title">知行合一</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -402,7 +402,7 @@
 <li>不同用户设置的时区不同</li>
 </ol>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
-<li><strong>server</strong>当前的<code>Syetem.currentTimeMills()</code>发送给客户端，注意这个时间是<a href="http://baike.baidu.com/link?url=DVReuC7Bq-ymYSvaYw3PGyEnl8Z6M8LZbJHlqtJSuxunMSrfB6JNq_sDlPOjQIpo9sSkdpLLTj--AG8CQcdx_lS4WwPdYJr7z3y9ti0OtcU9zhdHkRmv7AJzC6bTih7r"><strong>UTC</strong></a>时间。还有后台如果要给客户端发送时间数据，不要用<strong>Date</strong>，而是发送一个<strong>long</strong>类型的整数。</li>
+<li><strong>server</strong>当前的<code>Syetem.currentTimeMills()</code>发送给客户端，注意这个时间是<a href="http://baike.baidu.com/link?url=DVReuC7Bq-ymYSvaYw3PGyEnl8Z6M8LZbJHlqtJSuxunMSrfB6JNq_sDlPOjQIpo9sSkdpLLTj--AG8CQcdx_lS4WwPdYJr7z3y9ti0OtcU9zhdHkRmv7AJzC6bTih7r" target="_blank" rel="external"><strong>UTC</strong></a>时间。还有后台如果要给客户端发送时间数据，不要用<strong>Date</strong>，而是发送一个<strong>long</strong>类型的整数。</li>
 <li><strong>client</strong>设置时区为<strong>GMT+8</strong>, <code>TimeZone.setDefault(TimeZone.getTimeZone(&quot;GMT+8&quot;));</code>,这里先考虑在东八区的情况，其他时区暂不考虑</li>
 <li><p>编写方法同步client和server的时间</p>
 <pre><code>private void asyncBetweenServerAndClientTime(long serverTime) {

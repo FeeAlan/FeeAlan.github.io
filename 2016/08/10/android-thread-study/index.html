@@ -106,31 +106,17 @@
 
 
 
-<meta name="description" content="在android 4.0设置了一个规则：
-
-更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞
-
-如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为
-I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
+<meta name="description" content="在android 4.0设置了一个规则：  更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞  如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为 I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
+<meta name="keywords" content="thread,ui 更新,handler">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android 中线程的使用：更新UI">
 <meta property="og:url" content="http://feisongbai.com/blog/2016/08/10/android-thread-study/index.html">
-<meta property="og:site_name" content="知行合一&顺其自然">
-<meta property="og:description" content="在android 4.0设置了一个规则：
-
-更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞
-
-如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为
-I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
+<meta property="og:site_name" content="知行合一">
+<meta property="og:description" content="在android 4.0设置了一个规则：  更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞  如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为 I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
 <meta property="og:updated_time" content="2016-08-10T17:14:12.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android 中线程的使用：更新UI">
-<meta name="twitter:description" content="在android 4.0设置了一个规则：
-
-更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞
-
-如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为
-I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
+<meta name="twitter:description" content="在android 4.0设置了一个规则：  更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞  如果在主线程做耗时操作则会阻塞主线程，用户在此期间不能做任何交互，影响用户体验。Log显示为 I/Choreographer: Skipped 3000 frames!  The application may be doing too much work on its main">
 
 
 
@@ -153,7 +139,7 @@ I/Choreographer: Skipped 3000 frames!  The application may be doing too much wor
 
   <link rel="canonical" href="http://feisongbai.com/blog/2016/08/10/android-thread-study/"/>
 
-  <title> android 中线程的使用：更新UI | 知行合一&顺其自然 </title>
+  <title> android 中线程的使用：更新UI | 知行合一 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -198,7 +184,7 @@ I/Choreographer: Skipped 3000 frames!  The application may be doing too much wor
   <div class="custom-logo-site-title">
     <a href="/blog/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">知行合一&顺其自然</span>
+      <span class="site-title">知行合一</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -579,7 +565,7 @@ private Handler handler = new Handler() {
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/08/10/android-thread-study/"
-           data-title="android 中线程的使用：更新UI" data-url="http://feisongbai.com/blog/blog/2016/08/10/android-thread-study/">
+           data-title="android 中线程的使用：更新UI" data-url="http://feisongbai.com/blog/2016/08/10/android-thread-study/">
       </div>
     
   </div>

@@ -106,34 +106,17 @@
 
 
 
-<meta name="description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。
-
-不同用户的系统时间可能不同
-不同用户设置的时区不同
-
-解决办法
-server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
+<meta name="description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。  不同用户的系统时间可能不同 不同用户设置的时区不同  解决办法 server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
+<meta name="keywords" content="client,server,time">
 <meta property="og:type" content="article">
 <meta property="og:title" content="客户端与服务端同步时间">
 <meta property="og:url" content="http://feisongbai.com/blog/2016/08/02/client-and-server-time-calibration/index.html">
-<meta property="og:site_name" content="知行合一&顺其自然">
-<meta property="og:description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。
-
-不同用户的系统时间可能不同
-不同用户设置的时区不同
-
-解决办法
-server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
+<meta property="og:site_name" content="知行合一">
+<meta property="og:description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。  不同用户的系统时间可能不同 不同用户设置的时区不同  解决办法 server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
 <meta property="og:updated_time" content="2016-08-02T03:10:52.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="客户端与服务端同步时间">
-<meta name="twitter:description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。
-
-不同用户的系统时间可能不同
-不同用户设置的时区不同
-
-解决办法
-server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
+<meta name="twitter:description" content="场景设计一个电影开始放映的倒计时的功能。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。  不同用户的系统时间可能不同 不同用户设置的时区不同  解决办法 server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间是UTC时间。还有后台如果要给客户端发送时间数据，不要用Date">
 
 
 
@@ -156,7 +139,7 @@ server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间�
 
   <link rel="canonical" href="http://feisongbai.com/blog/2016/08/02/client-and-server-time-calibration/"/>
 
-  <title> 客户端与服务端同步时间 | 知行合一&顺其自然 </title>
+  <title> 客户端与服务端同步时间 | 知行合一 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -201,7 +184,7 @@ server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间�
   <div class="custom-logo-site-title">
     <a href="/blog/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">知行合一&顺其自然</span>
+      <span class="site-title">知行合一</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -512,7 +495,7 @@ server当前的Syetem.currentTimeMills()发送给客户端，注意这个时间�
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/08/02/client-and-server-time-calibration/"
-           data-title="客户端与服务端同步时间" data-url="http://feisongbai.com/blog/blog/2016/08/02/client-and-server-time-calibration/">
+           data-title="客户端与服务端同步时间" data-url="http://feisongbai.com/blog/2016/08/02/client-and-server-time-calibration/">
       </div>
     
   </div>
