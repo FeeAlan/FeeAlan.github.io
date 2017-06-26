@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[adb command]]></title>
-      <url>http://feisongbai.com/blog/2016/09/10/command/</url>
+      <url>http://feisongbai.com/2016/09/10/command/</url>
       <content type="html"><![CDATA[<h1 id="安装app"><a href="#安装app" class="headerlink" title="安装app"></a>安装app</h1><p>先定位到apk的文件夹再执行下面的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ adb install [appname.apk]</div><div class="line"> </div><div class="line">$ adb install -r [appname.apk]</div></pre></td></tr></table></figure></p>
 <p>appname.apk 为安装文件的文件名</p>
 <p>-r 意思为覆盖安装</p>
@@ -35,7 +35,7 @@
     
     <entry>
       <title><![CDATA[统一建模语言 UML 学习]]></title>
-      <url>http://feisongbai.com/blog/2016/08/26/UML-study/</url>
+      <url>http://feisongbai.com/2016/08/26/UML-study/</url>
       <content type="html"><![CDATA[<h3 id="UML教程"><a href="#UML教程" class="headerlink" title="UML教程"></a>UML教程</h3><ul>
 <li><a href="http://www.ibm.com/developerworks/cn/rational/321_uml/" target="_blank" rel="external">统一建模语言(UML) 版本 2.0</a></li>
 <li><a href="http://www.ibm.com/developerworks/cn/rational/rationaledge/content/feb05/bell/" target="_blank" rel="external">UML 基础: 类图</a></li>
@@ -59,7 +59,7 @@
     
     <entry>
       <title><![CDATA[Activity 启动模式]]></title>
-      <url>http://feisongbai.com/blog/2016/08/26/android-start-model/</url>
+      <url>http://feisongbai.com/2016/08/26/android-start-model/</url>
       <content type="html"><![CDATA[<p>activity 启动模式分为四种：<strong>standard</strong>、<strong>singleTop</strong>、<strong>singleTask</strong>、<strong>singleInstance</strong>. </p>
 <h2 id="1-standard"><a href="#1-standard" class="headerlink" title="1.standard"></a>1.standard</h2><p>标准启动模式，系统默认的启动方式。同一任务栈中可以存在多个activity实例。</p>
 <p>如果activity A 的启动模式为<strong>standard</strong>，并且activity A已启动，此时再次启动activity A，则会在任务栈中创建一个新的activity A 实例。任务栈中的状态 A—&gt;A 。</p>
@@ -84,7 +84,7 @@
     
     <entry>
       <title><![CDATA[android BroadcastReciver]]></title>
-      <url>http://feisongbai.com/blog/2016/08/25/android-broadcast/</url>
+      <url>http://feisongbai.com/2016/08/25/android-broadcast/</url>
       <content type="html"><![CDATA[<p><strong>android 系统的广播机制</strong></p>
 <h2 id="一、广播机制简介"><a href="#一、广播机制简介" class="headerlink" title="一、广播机制简介"></a>一、广播机制简介</h2><p>android四大组件之一，是一种全局监听器，用于监听系统全局，可以接收来自系统和应用的广播。同时也能发送广播给其他应用。</p>
 <h2 id="二、广播分类"><a href="#二、广播分类" class="headerlink" title="二、广播分类"></a>二、广播分类</h2><ol>
@@ -257,7 +257,7 @@ c. 直接使用
     
     <entry>
       <title><![CDATA[android 网络环境监听]]></title>
-      <url>http://feisongbai.com/blog/2016/08/22/android-network-change-listen/</url>
+      <url>http://feisongbai.com/2016/08/22/android-network-change-listen/</url>
       <content type="html"><![CDATA[<h2 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h2><ol>
 <li>判断用户是否联网</li>
 <li>判断用户的网络环境，根据网络环境做数据加载的调整。例如：在wifi环境下做视频播放、大文件下载、多图加载、加载数据量增加等等，而在移动网络则为用户节省流量。</li>
@@ -411,7 +411,7 @@ protected void onDestroy() {
     
     <entry>
       <title><![CDATA[android 中线程的使用：更新UI]]></title>
-      <url>http://feisongbai.com/blog/2016/08/10/android-thread-study/</url>
+      <url>http://feisongbai.com/2016/08/10/android-thread-study/</url>
       <content type="html"><![CDATA[<p>在android 4.0设置了一个规则：</p>
 <blockquote>
 <p>更新UI只能在主线程更新，那些耗时操作不能放在主线程中，防止主线程阻塞</p>
@@ -509,7 +509,7 @@ private Handler handler = new Handler() {
     
     <entry>
       <title><![CDATA[Java 线程学习(三)]]></title>
-      <url>http://feisongbai.com/blog/2016/08/07/java-study-thread-three/</url>
+      <url>http://feisongbai.com/2016/08/07/java-study-thread-three/</url>
       <content type="html"><![CDATA[<h1 id="线程的同步与锁"><a href="#线程的同步与锁" class="headerlink" title="线程的同步与锁"></a>线程的同步与锁</h1><h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h2><p>线程同步是为了防止多个线程操作同一个数据时，导致数据出错的问题。<br>例如： </p>
 <p>数据bean    </p>
 <pre><code>public class DataBean {
@@ -556,7 +556,7 @@ thread_a 当前d的值为：940
     
     <entry>
       <title><![CDATA[Java 线程学习(二)]]></title>
-      <url>http://feisongbai.com/blog/2016/08/06/java-study-thread-two/</url>
+      <url>http://feisongbai.com/2016/08/06/java-study-thread-two/</url>
       <content type="html"><![CDATA[<p>阻塞状态详解，即让线程离开运行状态，进入到<strong>就绪</strong>状态。</p>
 <h2 id="1-休眠"><a href="#1-休眠" class="headerlink" title="1.休眠"></a>1.休眠</h2><p>demo</p>
 <pre><code>public class ThreadTest {
@@ -679,7 +679,7 @@ main end
     
     <entry>
       <title><![CDATA[Java 线程学习(一)]]></title>
-      <url>http://feisongbai.com/blog/2016/08/06/java-thread-study/</url>
+      <url>http://feisongbai.com/2016/08/06/java-thread-study/</url>
       <content type="html"><![CDATA[<p>一直一来对于java多线程的知识不是理解特别透彻，在此对线程知识进行一次整理，加深对多线程的理解，方便到实际应用中。</p>
 <h2 id="一、-进程与线程"><a href="#一、-进程与线程" class="headerlink" title="一、 进程与线程"></a>一、 进程与线程</h2><h3 id="1-进程"><a href="#1-进程" class="headerlink" title="1. 进程"></a>1. 进程</h3><p>操作系统中有多个程序，这里每个程序就是一个进程。进程指的是一个内存中运行的程序，每个进程都有自己独立的内存空间，一个进程可以启动多个线程。</p>
 <h3 id="2-线程"><a href="#2-线程" class="headerlink" title="2. 线程"></a>2. 线程</h3><p>指的是进程中的一个执行单元，一个进程可以有多个线程。多个线程可以共享一个进程中的内存。</p>
@@ -738,7 +738,7 @@ Thread(ThreadGroup group, String name)
     
     <entry>
       <title><![CDATA[android studio 申请百度地图获取appkey]]></title>
-      <url>http://feisongbai.com/blog/2016/08/03/baidumap-apply-for-appkey/</url>
+      <url>http://feisongbai.com/2016/08/03/baidumap-apply-for-appkey/</url>
       <content type="html"><![CDATA[<h2 id="获取发布版SHA1-key"><a href="#获取发布版SHA1-key" class="headerlink" title="获取发布版SHA1 key"></a>获取发布版SHA1 key</h2><ol>
 <li><p>先生成一个签名文件</p>
 <blockquote>
@@ -766,7 +766,7 @@ Thread(ThreadGroup group, String name)
     
     <entry>
       <title><![CDATA[客户端与服务端同步时间]]></title>
-      <url>http://feisongbai.com/blog/2016/08/02/client-and-server-time-calibration/</url>
+      <url>http://feisongbai.com/2016/08/02/client-and-server-time-calibration/</url>
       <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p><strong>设计一个电影开始放映的倒计时的功能</strong>。正常情况下服务器把点击的放映时间传给客户端，然后客户端根据系统时间做倒计时。然而这里存在一些问题，可能导致不同的用户看到的倒计时不同。</p>
 <ol>
 <li>不同用户的系统时间可能不同</li>
@@ -794,7 +794,7 @@ Thread(ThreadGroup group, String name)
     
     <entry>
       <title><![CDATA[hexo发布新文章是自动打开编辑器]]></title>
-      <url>http://feisongbai.com/blog/2016/07/31/hexo-new-post-auto-open-markdown/</url>
+      <url>http://feisongbai.com/2016/07/31/hexo-new-post-auto-open-markdown/</url>
       <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在使用hexo时，发现每次new post一篇文章，都要先输入命令<code>hexo new &quot;new post name&quot;</code>,然后再去文件夹里找刚才new的那篇文章，之后再用markdown打开，有点麻烦，万一文章多了的话一下还难得找到。</p>
 <p>在网上找了一下解决了这个问题。</p>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ol>
@@ -822,14 +822,14 @@ hexo.on(&apos;new&apos;, function(data){
     
     <entry>
       <title><![CDATA[android 图片处理]]></title>
-      <url>http://feisongbai.com/blog/2016/07/31/android-image-compress/</url>
+      <url>http://feisongbai.com/2016/07/31/android-image-compress/</url>
       <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><a id="more"></a>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[android 表单提交]]></title>
-      <url>http://feisongbai.com/blog/2016/07/24/android-html-post/</url>
+      <url>http://feisongbai.com/2016/07/24/android-html-post/</url>
       <content type="html"><![CDATA[<p>之前那个项目遇到一个需求，大概是这个样子：</p>
 <blockquote>
 <p>用户创建一个户外活动，可以设置时间、地点、主题、内容。。。。</p>
@@ -914,7 +914,7 @@ hexo.on(&apos;new&apos;, function(data){
     
     <entry>
       <title><![CDATA[android TextView设置超链接]]></title>
-      <url>http://feisongbai.com/blog/2016/07/23/android-text-link/</url>
+      <url>http://feisongbai.com/2016/07/23/android-text-link/</url>
       <content type="html"><![CDATA[<p>今天在访问<a href="https://segmentfault.com/u/coding_fee" title="segmentfault" target="_blank" rel="external">segmentfault</a>时遇到一个这样的问题：<strong>如何为Textview设置超链接？</strong></p>
 <p>通过查阅资料后，总结了一下。</p>
 <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
@@ -951,7 +951,7 @@ tv.setMovementMethod(LinkMovementMethod.getInstance());
     
     <entry>
       <title><![CDATA[网络请求json解析时遇到的坑]]></title>
-      <url>http://feisongbai.com/blog/2016/07/18/network-gson-parse/</url>
+      <url>http://feisongbai.com/2016/07/18/network-gson-parse/</url>
       <content type="html"><![CDATA[<h1 id="1、网络请求数据返回的几种情况"><a href="#1、网络请求数据返回的几种情况" class="headerlink" title="1、网络请求数据返回的几种情况"></a>1、网络请求数据返回的几种情况</h1><ol>
 <li>http返回状态码为404或者500错误，即请求未成功</li>
 <li>http返回状态码为200，请求成功</li>
@@ -1077,7 +1077,7 @@ Type     type = new TypeToken&lt;TestBean&gt;() {}.getType();
     
     <entry>
       <title><![CDATA[Android 序列化与反序列化]]></title>
-      <url>http://feisongbai.com/blog/2016/07/17/Serialize-and-Deserialize/</url>
+      <url>http://feisongbai.com/2016/07/17/Serialize-and-Deserialize/</url>
       <content type="html"><![CDATA[<h2 id="1、什么是序列化与反序列化"><a href="#1、什么是序列化与反序列化" class="headerlink" title="1、什么是序列化与反序列化"></a>1、什么是序列化与反序列化</h2><blockquote>
 <p>序列化：将数据结构或对象转换成二进制串的过程</p>
 <p>反序列化：将在序列化过程中所生成的二进制串转换成数据结构或者对象的过程</p>
@@ -1193,7 +1193,7 @@ private String serialize(Person person) throws IOException {
     
     <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>http://feisongbai.com/blog/2016/07/14/hello-world/</url>
+      <url>http://feisongbai.com/2016/07/14/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
